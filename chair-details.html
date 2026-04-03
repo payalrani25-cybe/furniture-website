@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Detail</title>
+    <title>Chair Detail - LuxLuxe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-       
         #zoom-lens {
             position: absolute;
             border: 1px solid #d4d4d4;
@@ -15,15 +14,15 @@
             height: 150px;
             background-color: rgba(255, 255, 255, 0.3);
             cursor: crosshair;
+            z-index: 10;
         }
-        
         .thumb-active { border-color: #6366f1 !important; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans">
 
     <div class="p-6">
-        <a href="almira.html" class="inline-flex items-center gap-2 text-slate-600 font-bold hover:text-black transition">
+        <a href="index.html" class="inline-flex items-center gap-2 text-slate-600 font-bold hover:text-black transition">
             <i class="fa-solid fa-arrow-left"></i> Back To Home
         </a>
     </div>
@@ -33,9 +32,7 @@
         <div class="space-y-4">
             <div class="relative bg-white p-4 rounded-[3rem] shadow-sm border border-slate-100 flex items-center justify-center" id="img-container">
                 <img id="detail-main-img" src="" class="w-full h-[400px] object-contain rounded-[2rem]">
-                
                 <div id="zoom-lens" class="hidden"></div>
-                
                 <div id="zoom-result" class="absolute top-0 left-[105%] w-full h-full bg-white border-2 border-indigo-500 rounded-3xl z-50 hidden bg-no-repeat shadow-2xl"></div>
             </div>
             
@@ -64,28 +61,34 @@
         </div>
     </div>
 
-    <script src="scr.js"></script>
+    <script src="chair.js"></script>
     <script>
+        // 1. Get Product ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
-        // Ensure products array is available from script.js
-        const item = almirah.find(p => p.id == productId);
+
+        // 2. Find Item in 'chair' array (MATCHING YOUR JS VARIABLE)
+        const item = chair.find(p => p.id == productId);
 
         function loadDetails() {
-            if (!item) return;
+            if (!item) {
+                console.error("Chair not found!");
+                document.body.innerHTML = "<h1 class='text-center mt-20 text-2xl font-bold'>Product Not Found!</h1>";
+                return;
+            }
 
+            // Fill UI with data
             document.getElementById('detail-main-img').src = item.img;
             document.getElementById('detail-title').innerText = item.title;
             document.getElementById('detail-price').innerText = "₹" + item.price.toLocaleString();
             document.getElementById('detail-desc').innerText = item.desc;
-            document.getElementById('detail-specs').innerHTML = `<strong>Details:</strong><br>${item.specs}`;
+            document.getElementById('detail-specs').innerHTML = `<strong>Specifications:</strong><br>${item.specs}`;
 
+            // Load Gallery/Thumbnails
             const thumbBox = document.getElementById('thumb-container');
+            const galleryImages = (item.gallery && item.gallery.length > 0) ? item.gallery : [item.img];
             
-            // Check if product has a gallery array, else use the main image 4 times
-            const galleryImages = item.gallery && item.gallery.length > 0 ? item.gallery : [item.img, item.img, item.img, item.img];
-            
-            thumbBox.innerHTML = ''; // Clear previous
+            thumbBox.innerHTML = ''; 
             galleryImages.forEach((src, index) => {
                 thumbBox.innerHTML += `
                     <div onclick="changeImg('${src}', this)" class="thumbnail-item w-20 h-20 bg-white rounded-2xl p-2 border-2 ${index === 0 ? 'border-indigo-500' : 'border-slate-100'} cursor-pointer hover:border-indigo-300 transition shadow-sm">
@@ -94,25 +97,42 @@
                 `;
             });
 
-            // Initialize Zoom
+            // Start Zoom
             initZoom("detail-main-img", "zoom-result", "zoom-lens");
         }
 
         function changeImg(src, el) {
-            document.getElementById('detail-main-img').src = src;
-            // Border highlight change
+            const mainImg = document.getElementById('detail-main-img');
+            mainImg.src = src;
+            
             document.querySelectorAll('.thumbnail-item').forEach(item => item.classList.remove('border-indigo-500'));
             el.classList.add('border-indigo-500');
         }
 
-        // ZOOM LOGIC
         function initZoom(imgID, resultID, lensID) {
             const img = document.getElementById(imgID);
             const result = document.getElementById(resultID);
             const lens = document.getElementById(lensID);
             const container = document.getElementById("img-container");
 
-            container.addEventListener("mousemove", moveLens);
+            container.addEventListener("mousemove", (e) => {
+                result.style.backgroundImage = `url('${img.src}')`;
+                result.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+
+                const a = img.getBoundingClientRect();
+                let x = e.pageX - a.left - window.pageXOffset - (lens.offsetWidth / 2);
+                let y = e.pageY - a.top - window.pageYOffset - (lens.offsetHeight / 2);
+
+                if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
+                if (x < 0) x = 0;
+                if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
+                if (y < 0) y = 0;
+
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                result.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
+            });
+
             container.addEventListener("mouseenter", () => {
                 lens.classList.remove("hidden");
                 result.classList.remove("hidden");
@@ -121,46 +141,14 @@
                 lens.classList.add("hidden");
                 result.classList.add("hidden");
             });
-
-            function moveLens(e) {
-                // Set background image for result
-                result.style.backgroundImage = `url('${img.src}')`;
-                result.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
-
-                const pos = getCursorPos(e);
-                let x = pos.x - (lens.offsetWidth / 2);
-                let y = pos.y - (lens.offsetHeight / 2);
-
-                // Prevent lens from going outside
-                if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
-                if (x < 0) { x = 0; }
-                if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
-                if (y < 0) { y = 0; }
-
-                lens.style.left = x + "px";
-                lens.style.top = y + "px";
-
-                // Move Zoom Result
-                result.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
-            }
-
-            function getCursorPos(e) {
-                const a = img.getBoundingClientRect();
-                const x = e.pageX - a.left - window.pageXOffset;
-                const y = e.pageY - a.top - window.pageYOffset;
-                return { x: x, y: y };
-            }
         }
 
         function handleDetailBooking() {
             alert("Booking request received for: " + item.title);
         }
 
-        // Run on load
+        // Initialize on load
         window.onload = loadDetails;
     </script>
 </body>
 </html>
-
-
-

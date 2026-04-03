@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Detail</title>
+    <title>Product Detail - LuxLuxe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-       
         #zoom-lens {
             position: absolute;
             border: 1px solid #d4d4d4;
@@ -15,28 +14,29 @@
             height: 150px;
             background-color: rgba(255, 255, 255, 0.3);
             cursor: crosshair;
+            z-index: 10;
         }
-        
-        .thumb-active { border-color: #6366f1 !important; }
+        /* Mobile par zoom hide karne ke liye */
+        @media (max-width: 768px) {
+            #zoom-lens, #zoom-result { display: none !important; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans">
 
     <div class="p-6">
-        <a href="sofa.html" class="inline-flex items-center gap-2 text-slate-600 font-bold hover:text-black transition">
-            <i class="fa-solid fa-arrow-left"></i> Back To Home
-        </a>
+        <button onclick="history.back()" class="inline-flex items-center gap-2 text-slate-600 font-bold hover:text-black transition">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
     </div>
 
-    <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div id="product-container" class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         
         <div class="space-y-4">
             <div class="relative bg-white p-4 rounded-[3rem] shadow-sm border border-slate-100 flex items-center justify-center" id="img-container">
                 <img id="detail-main-img" src="" class="w-full h-[400px] object-contain rounded-[2rem]">
-                
                 <div id="zoom-lens" class="hidden"></div>
-                
-                <div id="zoom-result" class="absolute top-0 left-[105%] w-full h-full bg-white border-2 border-indigo-500 rounded-3xl z-50 hidden bg-no-repeat shadow-2xl"></div>
+                <div id="zoom-result" class="absolute top-0 left-[105%] w-full h-full bg-white border-2 border-indigo-500 rounded-3xl z-50 hidden bg-no-repeat shadow-2xl pointer-events-none"></div>
             </div>
             
             <div id="thumb-container" class="flex gap-4 justify-center px-4 overflow-x-auto pt-2">
@@ -45,74 +45,110 @@
 
         <div class="flex flex-col justify-center space-y-6">
             <div>
-                <h1 id="detail-title" class="text-4xl md:text-5xl font-black text-slate-900 leading-tight"></h1>
+                <span id="category-tag" class="bg-indigo-100 text-indigo-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Product</span>
+                <h1 id="detail-title" class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mt-2">Loading...</h1>
                 <p id="detail-price" class="text-3xl font-black text-indigo-600 mt-2"></p>
             </div>
 
             <div class="space-y-4">
-                <h3 class="text-xl font-bold text-slate-800">About this product</h3>
+                <h3 class="text-xl font-bold text-slate-800">Description</h3>
                 <p id="detail-desc" class="text-slate-500 leading-relaxed text-lg"></p>
-                <div id="detail-specs" class="bg-white p-6 rounded-3xl border border-slate-100 text-sm text-slate-600 space-y-2">
-                    </div>
+                
+                <div class="bg-white p-6 rounded-3xl border border-slate-100">
+                    <p class="font-bold text-slate-800 mb-2">Specifications:</p>
+                    <div id="detail-specs" class="text-sm text-slate-600 space-y-2"></div>
+                </div>
             </div>
 
             <div class="flex gap-4 pt-6">
-                <button onclick="handleDetailBooking()" class="flex-1 bg-slate-900 text-white py-5 rounded-[2rem] font-black text-xl hover:bg-slate-700 transition-all shadow-xl shadow-slate-200">
+                <button onclick="handleBooking()" class="flex-1 bg-slate-900 text-white py-5 rounded-[2rem] font-black text-xl hover:bg-slate-700 transition-all shadow-xl active:scale-95">
                     BOOK NOW
                 </button>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="sofa.js"></script>
+    <script src="chair.js"></script>
     <script>
+        // 1. URL se ID nikalna
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
-        // Ensure products array is available from script.js
-        const item = products.find(p => p.id == productId);
 
-        function loadDetails() {
-            if (!item) return;
+        // 2. Saare arrays ko ek Master List mein combine karna
+        let masterList = [];
+        if (typeof sofa !== 'undefined') masterList = [...masterList, ...sofa];
+        if (typeof chair !== 'undefined') masterList = [...masterList, ...chair];
+        // if (typeof almirah !== 'undefined') masterList = [...masterList, ...almirah];
 
+        // 3. Product dhundna
+        const item = masterList.find(p => p.id == productId);
+
+        function loadPage() {
+            if (!item) {
+                document.getElementById('product-container').innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <h1 class="text-3xl font-bold text-red-500">Product Not Found!</h1>
+                        <p class="text-slate-500 mt-2">Check if ID ${productId} is unique in your JS files.</p>
+                        <a href="index.html" class="mt-6 inline-block bg-slate-900 text-white px-8 py-3 rounded-full">Back to Home</a>
+                    </div>`;
+                return;
+            }
+
+            // Fill UI
             document.getElementById('detail-main-img').src = item.img;
             document.getElementById('detail-title').innerText = item.title;
             document.getElementById('detail-price').innerText = "₹" + item.price.toLocaleString();
             document.getElementById('detail-desc').innerText = item.desc;
-            document.getElementById('detail-specs').innerHTML = `<strong>Details:</strong><br>${item.specs}`;
+            document.getElementById('detail-specs').innerHTML = item.specs;
 
+            // Gallery logic
             const thumbBox = document.getElementById('thumb-container');
+            const gallery = (item.gallery && item.gallery.length > 0) ? item.gallery : [item.img];
             
-            // Check if product has a gallery array, else use the main image 4 times
-            const galleryImages = item.gallery && item.gallery.length > 0 ? item.gallery : [item.img, item.img, item.img, item.img];
-            
-            thumbBox.innerHTML = ''; // Clear previous
-            galleryImages.forEach((src, index) => {
+            thumbBox.innerHTML = '';
+            gallery.forEach((src, idx) => {
                 thumbBox.innerHTML += `
-                    <div onclick="changeImg('${src}', this)" class="thumbnail-item w-20 h-20 bg-white rounded-2xl p-2 border-2 ${index === 0 ? 'border-indigo-500' : 'border-slate-100'} cursor-pointer hover:border-indigo-300 transition shadow-sm">
+                    <div onclick="changeImg('${src}', this)" class="thumb-item w-20 h-20 bg-white rounded-2xl p-2 border-2 ${idx===0 ? 'border-indigo-500' : 'border-slate-100'} cursor-pointer hover:border-indigo-300 shadow-sm flex-shrink-0">
                         <img src="${src}" class="w-full h-full object-cover rounded-xl">
-                    </div>
-                `;
+                    </div>`;
             });
 
-            // Initialize Zoom
             initZoom("detail-main-img", "zoom-result", "zoom-lens");
         }
 
         function changeImg(src, el) {
             document.getElementById('detail-main-img').src = src;
-            // Border highlight change
-            document.querySelectorAll('.thumbnail-item').forEach(item => item.classList.remove('border-indigo-500'));
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('border-indigo-500'));
             el.classList.add('border-indigo-500');
         }
 
-        // ZOOM LOGIC
+        // Zoom Engine
         function initZoom(imgID, resultID, lensID) {
             const img = document.getElementById(imgID);
             const result = document.getElementById(resultID);
             const lens = document.getElementById(lensID);
             const container = document.getElementById("img-container");
+            const cx = 2; // Zoom Level
 
-            container.addEventListener("mousemove", moveLens);
+            container.addEventListener("mousemove", (e) => {
+                result.style.backgroundImage = `url('${img.src}')`;
+                result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cx) + "px";
+                
+                const a = img.getBoundingClientRect();
+                let x = e.clientX - a.left - (lens.offsetWidth / 2);
+                let y = e.clientY - a.top - (lens.offsetHeight / 2);
+
+                if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
+                if (x < 0) x = 0;
+                if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
+                if (y < 0) y = 0;
+
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cx) + "px";
+            });
+
             container.addEventListener("mouseenter", () => {
                 lens.classList.remove("hidden");
                 result.classList.remove("hidden");
@@ -121,46 +157,13 @@
                 lens.classList.add("hidden");
                 result.classList.add("hidden");
             });
-
-            function moveLens(e) {
-                // Set background image for result
-                result.style.backgroundImage = `url('${img.src}')`;
-                result.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
-
-                const pos = getCursorPos(e);
-                let x = pos.x - (lens.offsetWidth / 2);
-                let y = pos.y - (lens.offsetHeight / 2);
-
-                // Prevent lens from going outside
-                if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
-                if (x < 0) { x = 0; }
-                if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
-                if (y < 0) { y = 0; }
-
-                lens.style.left = x + "px";
-                lens.style.top = y + "px";
-
-                // Move Zoom Result
-                result.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
-            }
-
-            function getCursorPos(e) {
-                const a = img.getBoundingClientRect();
-                const x = e.pageX - a.left - window.pageXOffset;
-                const y = e.pageY - a.top - window.pageYOffset;
-                return { x: x, y: y };
-            }
         }
 
-        function handleDetailBooking() {
-            alert("Booking request received for: " + item.title);
+        function handleBooking() {
+            alert(`Booking successful for: ${item.title}`);
         }
 
-        // Run on load
-        window.onload = loadDetails;
+        window.onload = loadPage;
     </script>
 </body>
 </html>
-
-
-

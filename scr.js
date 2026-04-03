@@ -1,6 +1,6 @@
     const almirah = [
     {
-        id: 0,
+        id: 45,
         title: "Lux Designer #1",
         price: 22000,
         img: "https://m.media-amazon.com/images/I/61askwFumbL._SX679_.jpg",
@@ -19,7 +19,7 @@
     `
     },
     {
-        id: 1,
+        id: 41,
         title: "Lux Designer #2",
         price: 23500,
         img: "https://m.media-amazon.com/images/I/417vZtUatWL._SY300_SX300_QL70_FMwebp_.jpg",
@@ -38,7 +38,7 @@
     `
     },
       {
-        id: 2,
+        id: 42,
         title: "Lux Designer #3",
         price: 22000,
         img: "https://m.media-amazon.com/images/I/717sLF9vv4L._SX679_.jpg",
@@ -57,7 +57,7 @@
         <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
     `  },
     {
-        id: 3,
+        id: 43,
         title: "Lux Designer #4",
         price: 23500,
         img:  "https://m.media-amazon.com/images/I/61pLcPtqSAL._SX679_.jpg",
@@ -76,7 +76,7 @@
     `
     },
       {
-        id: 4,
+        id: 44,
         title: "Lux Designer #5",
         price: 22000,
         img:"https://m.media-amazon.com/images/I/41rdO+U8qyL._SY300_SX300_QL70_FMwebp_.jpg",
@@ -95,7 +95,7 @@
     `
     },
     {
-        id: 5,
+        id: 45,
         title: "Lux Designer #6",
         price: 23500,
         img:     "https://m.media-amazon.com/images/I/31cnHmJq-AL._SY300_SX300_QL70_FMwebp_.jpg",
@@ -114,7 +114,7 @@
     `
     },
       {
-        id: 6,
+        id: 46,
         title: "Lux Designer #7",
         price: 22000,
         img:  "https://m.media-amazon.com/images/I/210FkWPkSqL._SY300_SX300_QL70_FMwebp_.jpg",
@@ -133,7 +133,7 @@
     `
     },
     {
-        id: 7,
+        id: 47,
         title: "Lux Designer #8",
         price: 23500,
         img:  "https://m.media-amazon.com/images/I/41ioPeEHXjL._SY300_SX300_QL70_FMwebp_.jpg",
@@ -152,7 +152,7 @@
     `
     },
       {
-        id: 8,
+        id: 84,
         title: "Lux Designer #9",
         price: 22000,
         img: "https://m.media-amazon.com/images/I/71aRuUioQ3L._SX425_.jpg",
@@ -171,7 +171,7 @@
     `
     },
     {
-        id: 9,
+        id: 49,
         title: "Lux Designer #10",
         price: 23500,
         img: "https://m.media-amazon.com/images/I/71AnoAMClrL._SX679_.jpg",
@@ -191,7 +191,7 @@
     }
   ,
     {
-        id: 10,
+        id: 50,
         title: "Lux Designer #11",
         price: 23500,
         img: "https://m.media-amazon.com/images/I/41JnTdGTHCL._SY300_SX300_QL70_FMwebp_.jpg",
@@ -211,7 +211,7 @@
     }
     ,
     {
-        id: 11,
+        id: 51,
         title: "Lux Designer #12",
         price: 23500,
         img: "https://m.media-amazon.com/images/I/41OnJuw+X6L._SY300_SX300_QL70_FMwebp_.jpg",
