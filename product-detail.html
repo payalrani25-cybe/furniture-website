@@ -16,10 +16,10 @@
             cursor: crosshair;
             z-index: 10;
         }
-        /* Mobile par zoom hide karne ke liye */
         @media (max-width: 768px) {
             #zoom-lens, #zoom-result { display: none !important; }
         }
+        #thumb-container::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans">
@@ -31,7 +31,6 @@
     </div>
 
     <div id="product-container" class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-12">
-        
         <div class="space-y-4">
             <div class="relative bg-white p-4 rounded-[3rem] shadow-sm border border-slate-100 flex items-center justify-center" id="img-container">
                 <img id="detail-main-img" src="" class="w-full h-[400px] object-contain rounded-[2rem]">
@@ -45,7 +44,7 @@
 
         <div class="flex flex-col justify-center space-y-6">
             <div>
-                <span id="category-tag" class="bg-indigo-100 text-indigo-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Product</span>
+                <span id="category-tag" class="bg-indigo-100 text-indigo-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Luxury Collection</span>
                 <h1 id="detail-title" class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mt-2">Loading...</h1>
                 <p id="detail-price" class="text-3xl font-black text-indigo-600 mt-2"></p>
             </div>
@@ -70,39 +69,38 @@
 
     <script src="sofa.js"></script>
     <script src="chair.js"></script>
+
     <script>
-        // 1. URL se ID nikalna
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
 
-        // 2. Saare arrays ko ek Master List mein combine karna
-        let masterList = [];
-        if (typeof sofa !== 'undefined') masterList = [...masterList, ...sofa];
-        if (typeof chair !== 'undefined') masterList = [...masterList, ...chair];
-        // if (typeof almirah !== 'undefined') masterList = [...masterList, ...almirah];
-
-        // 3. Product dhundna
-        const item = masterList.find(p => p.id == productId);
-
         function loadPage() {
+            // Combine all arrays
+            let masterList = [];
+            if (typeof sofa !== 'undefined') masterList = [...masterList, ...sofa];
+            if (typeof chair !== 'undefined') masterList = [...masterList, ...chair];
+
+            // Find item
+            const item = masterList.find(p => p.id == productId);
+
             if (!item) {
                 document.getElementById('product-container').innerHTML = `
                     <div class="col-span-full text-center py-20">
                         <h1 class="text-3xl font-bold text-red-500">Product Not Found!</h1>
-                        <p class="text-slate-500 mt-2">Check if ID ${productId} is unique in your JS files.</p>
+                        <p class="mt-2 text-slate-500">ID: ${productId} - Check if ID is unique and JS files are linked correctly.</p>
                         <a href="index.html" class="mt-6 inline-block bg-slate-900 text-white px-8 py-3 rounded-full">Back to Home</a>
                     </div>`;
                 return;
             }
 
-            // Fill UI
+            // Fill Details
             document.getElementById('detail-main-img').src = item.img;
             document.getElementById('detail-title').innerText = item.title;
             document.getElementById('detail-price').innerText = "₹" + item.price.toLocaleString();
             document.getElementById('detail-desc').innerText = item.desc;
             document.getElementById('detail-specs').innerHTML = item.specs;
 
-            // Gallery logic
+            // Gallery
             const thumbBox = document.getElementById('thumb-container');
             const gallery = (item.gallery && item.gallery.length > 0) ? item.gallery : [item.img];
             
@@ -118,23 +116,22 @@
         }
 
         function changeImg(src, el) {
-            document.getElementById('detail-main-img').src = src;
+            const mainImg = document.getElementById('detail-main-img');
+            mainImg.src = src;
             document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('border-indigo-500'));
             el.classList.add('border-indigo-500');
+            // Update zoom background too
+            document.getElementById('zoom-result').style.backgroundImage = `url('${src}')`;
         }
 
-        // Zoom Engine
         function initZoom(imgID, resultID, lensID) {
             const img = document.getElementById(imgID);
             const result = document.getElementById(resultID);
             const lens = document.getElementById(lensID);
             const container = document.getElementById("img-container");
-            const cx = 2; // Zoom Level
+            const cx = 2; 
 
             container.addEventListener("mousemove", (e) => {
-                result.style.backgroundImage = `url('${img.src}')`;
-                result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cx) + "px";
-                
                 const a = img.getBoundingClientRect();
                 let x = e.clientX - a.left - (lens.offsetWidth / 2);
                 let y = e.clientY - a.top - (lens.offsetHeight / 2);
@@ -146,6 +143,9 @@
 
                 lens.style.left = x + "px";
                 lens.style.top = y + "px";
+
+                result.style.backgroundImage = `url('${img.src}')`;
+                result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cx) + "px";
                 result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cx) + "px";
             });
 
@@ -160,7 +160,8 @@
         }
 
         function handleBooking() {
-            alert(`Booking successful for: ${item.title}`);
+            const title = document.getElementById('detail-title').innerText;
+            alert(`Booking successful for: ${title}`);
         }
 
         window.onload = loadPage;
