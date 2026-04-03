@@ -3,346 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FurniCore - Home Page</title>
-   <link rel="stylesheet" href="style.css">
+    <title>LuxLuxe - Furniture Categories</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
     
     <style>
-        /* ========================================== */
-        /* 1. RESET & CSS VARIABLES                   */
-        /* ========================================== */
         :root {
             --primary: #1a1a1a;
             --secondary: #c8a165;
             --bg-light: #f9f9f9;
-            --white: #ffffff;
-            --grey-text: #666666;
-            --light-grey: #e4e4e4;
-            --transition: all 0.3s ease;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+        body { background-color: var(--bg-light); }
 
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--primary);
-            overflow-x: hidden;
-        }
-
-
-        button { cursor: pointer; border: none; outline: none; }
-
-
-        /* ========================================== */
-        /* 2. HEADER & NAVBAR                         */
-        /* ========================================== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-
-        .logo h1 {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            cursor: pointer;
-        }
-
-
-        .logo span { color: var(--secondary); }
-
-
-        .nav-search {
-            width: 40%;
-            display: flex;
-            border: 1px solid var(--light-grey);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-
-        .nav-search input {
-            width: 100%;
-            padding: 10px 15px;
-            border: none;
-            outline: none;
-            font-size: 14px;
-        }
-
-
-        .nav-search button {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0 15px;
-            transition: var(--transition);
-        }
-
-
-        .nav-search button:hover { background: var(--secondary); }
-
-
-        .nav-icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-
-        .nav-icons i {
-            font-size: 18px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-
-        .nav-icons i:hover { color: var(--secondary); }
-
-
-        /* ========================================== */
-        /* 3. HERO SECTION                            */
-        /* ========================================== */
-        .hero {
-            height: 40vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1500') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--white);
-            text-align: center;
-            padding: 0 20px;
-        }
-
-
-        .hero h2 { font-size: 38px; font-weight: 700; margin-bottom: 10px; }
-        .hero p { font-size: 16px; opacity: 0.9; margin-bottom: 20px; }
-
-
-        /* ========================================== */
-        /* 4. PRODUCTS GRID                           */
-        /* ========================================== */
-        .section-title {
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 0 5%;
-            margin-bottom: 60px;
-        }
-
-
-        .product-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-
-
-        .prod-img-wrapper {
-            height: 280px;
-            position: relative;
-            overflow: hidden;
-        }
-
-
-        .prod-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-
-        .prod-info {
-            padding: 15px;
-            text-align: center;
-        }
-       
-        .prod-name {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-
-        /* ========================================== */
-        /* 5. FAQ SECTION                             */
-        /* ========================================== */
-        .faq-section {
-            max-width: 800px;
-            margin: 0 auto 80px auto;
-            padding: 0 20px;
-        }
-
-
-        .faq-item {
-            background-color: var(--white);
-            margin-bottom: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-
-
-        .faq-question {
-            width: 100%;
-            padding: 20px;
-            background: none;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-
-        .faq-question:hover {
-            color: var(--secondary);
-        }
-
-
-        .faq-question i {
-            transition: transform 0.3s ease;
-            font-size: 14px;
-        }
-
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background-color: #fcfcfc;
-        }
-
-
-        .faq-answer p {
-            padding: 20px;
-            color: var(--grey-text);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-
-        /* एक्टिव क्लास के लिए स्टाइल */
-        .faq-item.active .faq-answer {
-            max-height: 200px; /* पर्याप्त ऊंचाई ताकि टेक्स्ट पूरा दिखे */
-        }
-
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-
-        /* ========================================== */
-        /* 6. SIGN-UP / LOGIN PAGE                    */
-        /* ========================================== */
-        .auth-overlay-page {
-            /* position: fixed; */
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 3000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-        .auth-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            width: 400px;
-            max-width: 90%;
-            text-align: center;
-            position: relative;
-        }
-
-
-        .auth-box h2 { margin-bottom: 10px; font-weight: 700;}
-        .auth-box input {
-            width: 100%; padding: 12px;
-            margin: 8px 0; border: 1px solid var(--light-grey);
-            border-radius: 4px; outline: none;
-        }
-        .auth-box input:focus { border-color: var(--secondary); }
-
-
-        .auth-submit-btn {
-            width: 100%; padding: 12px;
-            background: var(--secondary); color: var(--white);
-            font-weight: 600; border-radius: 4px; margin-top: 10px;
-            transition: var(--transition);
-        }
-        .auth-submit-btn:hover { background: var(--primary); }
-
-
-        .close-auth {
-            position: absolute; top: 15px; right: 20px;
-            font-size: 24px; cursor: pointer; color: #777;
-        }
-    </style>
-</head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxLuxe - Furniture Categories</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Aapka CSS jo pehle tha */
+        /* Category Card Styling */
         .category-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             border: 1px solid #f1f5f9;
         }
+        
         .category-card:hover {
             transform: translateY(-12px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            border-color: #e2e8f0;
+            border-color: #6366f1; /* Indigo color on hover */
         }
+
         .category-card img {
             transition: all 0.5s ease;
         }
+
         .category-card:hover img {
             transform: scale(1.1);
         }
     </style>
 </head>
-<body class="bg-slate-50 font-sans">
+<body class="bg-slate-50">
 
-    <header class="py-12 text-center">
+    <header class="py-12 text-center bg-white shadow-sm mb-10">
         <h1 class="text-5xl font-black text-slate-900 tracking-tighter">
             LUX<span class="text-indigo-600">LUXE</span>
         </h1>
@@ -355,17 +57,18 @@
     <div class="py-20"></div>
 
     <script>
+        // AAPKA DATA ARRAY
         const categories = [
-            {id: 1, name: "sofa", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500", page: "sofa.html" },
-    { id: 7, name: "almira", img: "https://5.imimg.com/data5/SELLER/Default/2023/2/LA/AD/EX/109711794/almari-500x500.jpeg", page: "almira.html" },
-    { id: 8, name: "Chairs", img:"https://supremefurniture.co.in/cdn/shop/files/Ornate-Red-Black.jpg?v=1706170905", page: "chair.html" }, 
-            { id: 2, name: "Beds",  img: "https://images.woodenstreet.de/image/cache/data/bed-with-storage/brixton-sheesham-wood-bed-with-storage-drawers-king-size-honey-finish/new-logo/New+Looks+/3-750x650.jpg", page: "beds.html" },
-            { id: 3, name: "Dining Sets",  img: "https://m.media-amazon.com/images/I/814PZfK2vxL._AC_UF894,1000_QL80_.jpg", page: "dining-sets.html" },
-            { id: 4, name: "Study Tables",img: "https://www.nismaayadecor.in/cdn/shop/files/buy-house-of-woodworm-premium-handcrafted-furniture-noir-study-desk-console-table-black-ebony-finish-lifestyle_1_-Photoroom.jpg?v=1747393648&width=1080", page: "study-tables.html" },
+            { id: 1, name: "sofa", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500", page: "sofa.html" },
+            { id: 7, name: "almira", img: "https://5.imimg.com/data5/SELLER/Default/2023/2/LA/AD/EX/109711794/almari-500x500.jpeg", page: "almira.html" },
+            { id: 8, name: "Chairs", img: "https://supremefurniture.co.in/cdn/shop/files/Ornate-Red-Black.jpg?v=1706170905", page: "chair.html" }, 
+            { id: 2, name: "Beds", img: "https://images.woodenstreet.de/image/cache/data/bed-with-storage/brixton-sheesham-wood-bed-with-storage-drawers-king-size-honey-finish/new-logo/New+Looks+/3-750x650.jpg", page: "beds.html" },
+            { id: 3, name: "Dining Sets", img: "https://m.media-amazon.com/images/I/814PZfK2vxL._AC_UF894,1000_QL80_.jpg", page: "dining-sets.html" },
+            { id: 4, name: "Study Tables", img: "https://www.nismaayadecor.in/cdn/shop/files/buy-house-of-woodworm-premium-handcrafted-furniture-noir-study-desk-console-table-black-ebony-finish-lifestyle_1_-Photoroom.jpg?v=1747393648&width=1080", page: "study-tables.html" },
             { id: 5, name: "Centre Tables", img: "https://images.jdmagicbox.com/quickquotes/images_main/-q33hxnn2.jpg", page: "centre-tables.html" },
             { id: 6, name: "Wardrobes", img: "https://m.media-amazon.com/images/I/61QQCZISxvL._AC_UF894,1000_QL80_.jpg", page: "wardrobes.html" },
-          { id: 9, name: "Wall Shelf", img: "https://m.media-amazon.com/images/I/61wNbNgf8OL._AC_UF894,1000_QL80_.jpg", page: "wall-shelf.html" },
-            { id: 10, name: "Kichen Furniture", img: "https://www.livehomes.in/crm/public/image/blogs/1387843721716786872.jpg", page: "kitchen-furniture.html" },
+            { id: 9, name: "Wall Shelf", img: "https://m.media-amazon.com/images/I/61wNbNgf8OL._AC_UF894,1000_QL80_.jpg", page: "wall-shelf.html" },
+            { id: 10, name: "Kitchen Furniture", img: "https://www.livehomes.in/crm/public/image/blogs/1387843721716786872.jpg", page: "kitchen-furniture.html" },
             { id: 11, name: "TV Unit", img: "https://m.media-amazon.com/images/I/71H8B1O5nVL.jpg", page: "tv-unit.html" },
             { id: 13, name: "Velvet Ottoman", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ITkOYnLk0jbBVBAin2GWR9bIZcEmrQvwjA&s", page: "velvet-ottoman.html" },
             { id: 14, name: "Shoe Rack", img: "https://www.squaro.in/cdn/shop/products/61klPvS39IL._AC_UF894_1000_QL80_FMwebp.webp?v=1679055889&width=1445", page: "shoe-rack.html" },
@@ -374,30 +77,31 @@
             { id: 20, name: "Metal Bed Frame", img: "https://cdn.shopify.com/s/files/1/0181/1795/files/Single_Block_Bed_in_Black.jpg", page: "metal-bed-frame.html" }
         ];
 
-        // 2. FUNCTION: Categories ko render karna
+        // RENDER FUNCTION
         function renderCategories() {
             const grid = document.getElementById('category-grid');
-            grid.innerHTML = ''; // Clear previous content
+            if (!grid) return;
+            
+            grid.innerHTML = ''; 
 
             categories.forEach(item => {
-                // Card ka design waisa hi hai jaisa aapne manga tha
+                // 'onclick' yahan har image/card ko uske page se jodd raha hai
                 grid.innerHTML += `
-                    <div onclick="window.location.href='${item.page}'" class="category-card bg-white p-5 rounded-[3rem] shadow-sm flex flex-col items-center">
+                    <div onclick="window.location.href='${item.page}'" class="category-card bg-white p-5 rounded-[3rem] shadow-sm flex flex-col items-center group">
                         <div class="w-full h-44 overflow-hidden rounded-[2.5rem] mb-4 shadow-inner">
                             <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover">
                         </div>
                         <h3 class="text-xl font-bold text-slate-800 capitalize tracking-tight">${item.name}</h3>
-                        <div class="mt-2 text-indigo-500 opacity-0 group-hover:opacity-100 transition">
-                            View Collection <i class="fa-solid fa-arrow-right text-xs"></i>
+                        <div class="mt-2 text-indigo-500 opacity-0 group-hover:opacity-100 transition duration-300">
+                            Explore Now <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
                         </div>
                     </div>
                 `;
             });
         }
 
-        // Jab page puri tarah load ho jaye, tab function chalayein
-        window.onload = renderCategories;
+        // Page load hone par start karein
+        window.addEventListener('DOMContentLoaded', renderCategories);
     </script>
 </body>
 </html>
-
