@@ -6,18 +6,15 @@
         price: 23500,
         img:     "https://m.media-amazon.com/images/I/51ZxYRxTACL._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/81ftGL5yVSL._SX679_.jpg","https://m.media-amazon.com/images/I/91auyHHRDlL._SX679_.jpg","https://m.media-amazon.com/images/I/81+5vdJtlQL._SX679_.jpg","https://m.media-amazon.com/images/I/71cbxUuF8ML._SX679_.jpg"],
-      desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+   desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
       {
         id: 1,
@@ -25,18 +22,15 @@
         price: 22000,
         img:     "https://m.media-amazon.com/images/I/51xTrz+8p1L._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/61N8sF8+SDL._SX679_.jpg","https://m.media-amazon.com/images/I/61z98nWvOpL._SX679_.jpg","https://m.media-amazon.com/images/I/41yQY6cSeuL.jpg","https://m.media-amazon.com/images/I/619L2a0c7IL._SX679_.jpg"],
-      desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+  desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
     {
         id: 2,
@@ -44,18 +38,15 @@
         price: 23500,
         img:     "https://m.media-amazon.com/images/I/51DDD5anJGL._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/61iAxKMpsyL._SX679_.jpg","https://m.media-amazon.com/images/I/71J05MmLfCL._SX679_.jpg","https://m.media-amazon.com/images/I/710Ns9kiX9L._SX679_.jpg","https://m.media-amazon.com/images/I/717atqpd81L._SL1500_.jpg"],
-    desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+  desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
       {
         id: 3,
@@ -63,18 +54,15 @@
         price: 22000,
         img:     "https://m.media-amazon.com/images/I/41tX0lKGG+L._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/515KnsA7REL._SX679_.jpg","https://m.media-amazon.com/images/I/51LxG1GWlPL._SX679_.jpg","https://m.media-amazon.com/images/I/51IXmGIAkKL._SX679_.jpg","https://m.media-amazon.com/images/I/51LxG1GWlPL._SX679_.jpg"],
-       desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+    desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
     {
         id: 4,
@@ -82,18 +70,15 @@
         price: 23500,
         img:     "https://m.media-amazon.com/images/I/71wH2MzNDTL._SX679_.jpg",
         gallery:["https://m.media-amazon.com/images/I/41odFeycS1L.jpg","https://m.media-amazon.com/images/I/51XHDAkeQ-L.jpg","https://m.media-amazon.com/images/I/51RHYXcjJwL._SX679_.jpg","https://m.media-amazon.com/images/I/614j7tAQR3L._SX679_.jpg"],
-   desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+  desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
       {
         id: 5,
@@ -101,18 +86,15 @@
         price: 22000,
         img:     "https://m.media-amazon.com/images/I/41daRubniVL._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/61HI49Zz+KL._SX679_.jpg","https://m.media-amazon.com/images/I/61NQM7cjXML._SX679_.jpg","https://m.media-amazon.com/images/I/51jD0SYTqiL._SX679_.jpg","https://m.media-amazon.com/images/I/61DKKI2fuwL._SX679_.jpg"],
-       desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+    desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
     {
         id: 6,
@@ -120,18 +102,15 @@
         price: 23500,
         img:     "https://m.media-amazon.com/images/I/41uAvWYSdML._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/618waBLxEUL._SX679_.jpg","https://m.media-amazon.com/images/I/61PyJOG240L._SX679_.jpg","https://m.media-amazon.com/images/I/71cyucCh-aL._SX679_.jpg","https://m.media-amazon.com/images/I/719KasAwtwL._SX679_.jpg"],
-      desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+    desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
       {
         id: 7,
@@ -139,18 +118,15 @@
         price: 22000,
         img: "https://m.media-amazon.com/images/I/41OFOsOBA+L._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/51Jk2L-frfL._SX679_.jpg","https://m.media-amazon.com/images/I/413pyBETyCL._SX679_.jpg","https://m.media-amazon.com/images/I/71vz0tXYKCL._SX679_.jpg","https://m.media-amazon.com/images/I/61jxMiGlq4L._SX679_.jpg"],
- desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+ desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
     },
     {
         id: 8,
@@ -158,21 +134,20 @@
         price: 23500,
         img: "https://m.media-amazon.com/images/I/51fJlpawCKL._SY300_SX300_QL70_FMwebp_.jpg",
         gallery:["https://m.media-amazon.com/images/I/51dVk4Oy0EL._SX679_.jpg","https://m.media-amazon.com/images/I/31NoVl+BapL._SS100_.jpg","https://m.media-amazon.com/images/I/61D+7XUZErL._SX679_.jpg","https://m.media-amazon.com/images/I/51dVk4Oy0EL._SX679_.jpg"],
-       desc: `Elevate your bedroom aesthetics with our Everlast 3-Door Wardrobe, a perfect blend of modern sophistication and massive storage capacity. Crafted from high-grade, termite-resistant engineered wood, this wardrobe is designed to last for generations. 
+       desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
-    The interior is intelligently compartmentalized with dedicated hanging rods for your formals, wide shelves for folded linens, and a secure internal locker for your valuables. The sleek, full-length mirror on the center door adds functionality while making your room feel more spacious. With a premium matte finish and ergonomic brushed-metal handles, this piece isn't just furniture—it's a lifestyle upgrade.`,
-
-    specs: `
-        <b>Material:</b> High-Density Water-Resistant Engineered Wood<br>
-        <b>Finish:</b> Scratch-Resistant Walnut Matte Grain<br>
-        <b>Dimensions:</b> Height: 78" | Width: 48" | Depth: 22"<br>
-        <b>Configuration:</b> 3 Doors, 5 Shelves, 1 Hanging Rod, 1 Internal Locker<br>
-        <b>Safety:</b> Soft-close hinges for noise-free operation<br>
-        <b>Warranty:</b> 3 Years Manufacturer Warranty against defects
-    `
+specs: `
+    <b>Material:</b> Solid Teak Wood Frame (Mazboot Sagwan ki Lakdi)<br>
+    <b>Fabric:</b> High-Quality Stain-Resistant Velvet<br>
+    <b>Seating:</b> 3-Seater with High-Density Supersoft Foam<br>
+    <b>Dimensions:</b> Length: 84" | Width: 35" | Height: 32"<br>
+    <b>Warranty:</b> 2 Years Manufacturer Warranty against frame defects
+`
+    
     },
     
 ];
+
 
 
 let cart = [];
