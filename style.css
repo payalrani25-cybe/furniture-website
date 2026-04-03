@@ -1,0 +1,336 @@
+/* ================= FOOTER CSS (Your Original with Full Width Fix) ================= */
+.recommendation-bar {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.recommendation-bar p {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.recommendation-bar button {
+    background-color: #ffd814;
+    border: 1px solid #fcd200;
+    border-radius: 4px;
+    width: 200px;
+    padding: 6px 0;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
+}
+
+.recommendation-bar button:hover {
+    background-color: #f7ca00;
+}
+
+.recommendation-bar .new-cust {
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.recommendation-bar a {
+    color: #007185;
+    text-decoration: none;
+}
+
+.back-to-top {
+    background-color: #37475a;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    background-color: #485769;
+}
+
+.main-footer {
+    background-color: #232f3e;
+    color: #fff;
+    padding: 40px 0;
+    /* height: 280px; <-- Maine ise hata diya hai taaki footer flexible rahe */
+    
+    /* 👇 Ye line aapke original code ko poori screen me kheech degi */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    /* 👇 Tekst ko ek dayre me rakhne ke liye ye 3 line add ki hain */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-col h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-col ul li a:hover {
+    text-decoration: underline;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer-divider {
+    border-top: 1px solid #3a4553;
+}
+
+.footer-bottom-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.footer-selectors {
+    display: flex;
+    gap: 15px;
+}
+
+.selector-container {
+    position: relative;
+}
+
+.selector-box {
+    border: 1px solid #848688;
+    border-radius: 3px;
+    padding: 6px 15px;
+    font-size: 13px;
+    color: #ccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    color: #333;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f2f2;
+}
+
+
+/* ================= UPDATED HEADER CSS ================= */
+.main-header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-bottom: 1px solid #ededed;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; /* Beech me gaps maintain karne ke liye */
+}
+
+/* 1. Left side nav links */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Links ke beech ka gap */
+    flex-wrap: wrap;
+    flex: 1; /* Ye nav ko stretch karke search bar ko aage dhakelega */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.2s;
+    white-space: nowrap; /* Text next line me wrap nahi hoga */
+}
+
+.nav-links a:hover {
+    color: #d15a24;
+}
+
+/* 2. Middle Search Box */
+.search-container {
+    position: relative;
+    width: 300px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    transition: border-bottom 0.2s;
+    font-size: 14px;
+}
+
+.search-container input:focus { 
+    border-bottom: 1px solid #d15a24; 
+}
+
+.search-container i {
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    color: #666;
+    cursor: pointer;
+}
+
+/* 3. Right Side Icons */
+.header-actions { 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+}
+
+.action-icon {
+    font-size: 22px;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+    color: #333;
+}
+
+.action-icon:hover { 
+    color: #d15a24; 
+}
+
+.cart-container { position: relative; }
+.cart-badge {
+    position: absolute;
+    top: -8px; right: -10px;
+    background-color: #d15a24; color: white;
+    font-size: 11px; width: 18px; height: 18px;
+    border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+}
+
+/* Responsive Media Queries for Mobile */
+@media (max-width: 768px) {
+    .header-flex { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 15px;
+    }
+    .nav-links { 
+        justify-content: center; 
+    }
+    .search-container { 
+        width: 100%; 
+    }
+    .header-actions { 
+        margin-top: 10px; 
+        justify-content: center; 
+    }
+}
+
+.sub-footer {
+    background-color: #131a22;
+    padding: 30px 0;
+    /* 👇 Ye sub-footer ko bhi poori screen par le aayega */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.sub-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    /* 👇 Content ko center me rakhne ke liye */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.sub-footer a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 12px;
+}
+
+.sub-footer a strong {
+    color: #fff;
+}
+
+.sub-footer a span {
+    color: #999;
+}
+
+.sub-footer a:hover strong {
+    text-decoration: underline;
+}
+
+.fontChange p {
+    font-size: 14px;
+    color: #dcdada;
+    line-height: 23px;
+}
+
+i {
+    color: white;
+}
