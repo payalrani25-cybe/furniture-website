@@ -239,8 +239,34 @@ function removeFromCart(id) {
 }
 
 // Booking Alert
-function handleBooking(name) {
-    alert(`🎉 Congratulations! Aapne ${name} ki booking request bhej di hai. Hum aapko 24 ghante mein sampark karenge.`);
+// Client ka number yaha set karein (Country code ke saath)
+const CLIENT_PHONE = "919876543210"; 
+
+function handleBooking(itemName) {
+    let message = "";
+
+    if (itemName === 'All Cart Items') {
+        // Agar poore cart ka order hai
+        if (cart.length === 0) {
+            alert("Aapka cart khali hai!");
+            return;
+        }
+        
+        message = "Hello Sofa Palace! Main ye items order karna chahta hoon:\n\n";
+        cart.forEach((item, index) => {
+            message += `${index + 1}. ${item.name} - ₹${item.price}\n`;
+        });
+        message += `\n*Grand Total: ₹${document.getElementById('grand-total').innerText}*`;
+    } else {
+        // Agar kisi single item ka order hai
+        message = `Hello! Mujhe ye item order karna hai: ${itemName}`;
+    }
+
+    // WhatsApp link generate karna
+    const whatsappURL = `https://wa.me/${CLIENT_PHONE}?text=${encodeURIComponent(message)}`;
+    
+    // Naye tab mein kholna
+    window.open(whatsappURL, '_blank');
 }
 
 // Global Update Function
