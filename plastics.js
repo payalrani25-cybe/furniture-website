@@ -4,8 +4,8 @@
         id: 0,
         title: "Lux Designer #12",
         price: 23500,
-        img:     "https://m.media-amazon.com/images/I/51ZxYRxTACL._SY300_SX300_QL70_FMwebp_.jpg",
-        gallery:["https://m.media-amazon.com/images/I/81ftGL5yVSL._SX679_.jpg","https://m.media-amazon.com/images/I/91auyHHRDlL._SX679_.jpg","https://m.media-amazon.com/images/I/81+5vdJtlQL._SX679_.jpg","https://m.media-amazon.com/images/I/71cbxUuF8ML._SX679_.jpg"],
+        img:     "https://m.media-amazon.com/images/I/41mNEekbT1L._SY300_SX300_QL70_FMwebp_.jpg",
+        gallery:["https://m.media-amazon.com/images/I/71O3QAdpoSL._SX679_.jpg","https://m.media-amazon.com/images/I/71rt+P-VxxL._SX679_.jpg","https://m.media-amazon.com/images/I/71vy+qPX-EL._SX679_.jpg","https://m.media-amazon.com/images/I/81-FBAaTjwL._SX679_.jpg"],
    desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
 specs: `
@@ -20,8 +20,8 @@ specs: `
         id: 1,
         title: "Lux Designer #13",
         price: 22000,
-        img:     "https://m.media-amazon.com/images/I/51xTrz+8p1L._SY300_SX300_QL70_FMwebp_.jpg",
-        gallery:["https://m.media-amazon.com/images/I/61N8sF8+SDL._SX679_.jpg","https://m.media-amazon.com/images/I/61z98nWvOpL._SX679_.jpg","https://m.media-amazon.com/images/I/41yQY6cSeuL.jpg","https://m.media-amazon.com/images/I/619L2a0c7IL._SX679_.jpg"],
+        img:     "https://m.media-amazon.com/images/I/41YAcnS-iwL._SY300_SX300_QL70_FMwebp_.jpg",
+        gallery:["https://m.media-amazon.com/images/I/71uZeBHTh5L._SX679_.jpg","https://m.media-amazon.com/images/I/81+vsMeM8kL._SX679_.jpg","https://m.media-amazon.com/images/I/81ac87Ox+kL._SX679_.jpg","https://m.media-amazon.com/images/I/818W9ALHoJL._SX679_.jpg"],
   desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
 specs: `
@@ -36,8 +36,8 @@ specs: `
         id: 2,
         title: "Lux Designer #14",
         price: 23500,
-        img:     "https://m.media-amazon.com/images/I/51DDD5anJGL._SY300_SX300_QL70_FMwebp_.jpg",
-        gallery:["https://m.media-amazon.com/images/I/61iAxKMpsyL._SX679_.jpg","https://m.media-amazon.com/images/I/71J05MmLfCL._SX679_.jpg","https://m.media-amazon.com/images/I/710Ns9kiX9L._SX679_.jpg","https://m.media-amazon.com/images/I/717atqpd81L._SL1500_.jpg"],
+        img:     "https://m.media-amazon.com/images/I/3167gY6b1rL._SY300_SX300_QL70_FMwebp_.jpg",
+        gallery:["https://m.media-amazon.com/images/I/51fPuLIRqtL._SX679_.jpg","https://m.media-amazon.com/images/I/41ngQTcdqDL.jpg","https://m.media-amazon.com/images/I/514Bj-+BJEL._SX679_.jpg","https://m.media-amazon.com/images/I/81-elAnv4oL._SX679_.jpg"],
   desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
 specs: `
@@ -52,7 +52,7 @@ specs: `
         id: 3,
         title: "Lux Designer #15",
         price: 22000,
-        img:     "https://m.media-amazon.com/images/I/41tX0lKGG+L._SY300_SX300_QL70_FMwebp_.jpg",
+        img:     "https://m.media-amazon.com/images/I/515DoWq-n5L._AC_UL320_.jpg",
         gallery:["https://m.media-amazon.com/images/I/515KnsA7REL._SX679_.jpg","https://m.media-amazon.com/images/I/51LxG1GWlPL._SX679_.jpg","https://m.media-amazon.com/images/I/51IXmGIAkKL._SX679_.jpg","https://m.media-amazon.com/images/I/51LxG1GWlPL._SX679_.jpg"],
     desc: `Apne living room ko ek naya aur royal look dein hamare Lux Designer Sofa ke saath. Isme ultra-soft premium velvet fabric ka istemal kiya gaya hai jo dekhne mein behad khoobsurat aur baithne mein bahut comfortable hai. Iska ergonomic design aapki back ko perfect support deta hai, taaki aap ghanto tak bina thake relax kar sakein.`,
 
@@ -197,7 +197,7 @@ function init() {
 
 // Navigation
 function goToDetails(id) {
-    window.location.href = `chair-details.html?id=${id}`;
+    window.location.href = `plastics-details.html?id=${id}`;
 }
 
 // Wishlist Logic
