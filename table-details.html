@@ -1,32 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sofa Luxe - Premium 3D View</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-
-
     <style>
-        /* Loading Poster Fix: White screen hatane ke liye */
-
         model-viewer::part(poster) {
-
             background-size: contain;
-
             background-repeat: no-repeat;
             background-position: center;
-
             background-color: #ffffff;
-
         }
 
         .active-thumb {
@@ -34,121 +20,80 @@
             scale: 1.05;
         }
     </style>
-
 </head>
 
 <body class="bg-slate-50 font-sans p-4 md:p-10">
-
-
-
     <div class="max-w-5xl mx-auto">
-
         <button onclick="history.back()"
             class="mb-6 font-bold text-indigo-600 flex items-center gap-2 hover:translate-x-[-5px] transition-transform">
-
             <span>←</span> Back to Shop
-
         </button>
 
 
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-
             <div class="space-y-6">
-
                 <div
                     class="bg-white rounded-[3rem] shadow-2xl overflow-hidden p-4 border border-slate-100 relative h-[450px] flex items-center justify-center">
 
-
                     <model-viewer id="main-3d" src="" poster="" ar camera-controls auto-rotate shadow-intensity="1"
                         class="hidden w-full h-full">
-
                         <div slot="poster" id="custom-poster"
                             class="w-full h-full flex items-center justify-center bg-white">
-
                             <img id="poster-img" src="" class="w-full h-full object-contain">
-
                         </div>
 
                     </model-viewer>
-
-
-
-
-
                     <img id="main-img" src=""
                         class="w-full h-full object-contain rounded-3xl transition-opacity duration-300">
-
                 </div>
 
-
-
                 <div id="thumb-container" class="flex gap-4 overflow-x-auto py-2 px-1">
-
                     <div onclick="show3D()"
                         class="min-w-[90px] h-20 bg-indigo-600 text-white rounded-2xl flex flex-col items-center justify-center cursor-pointer shadow-lg hover:bg-indigo-700 transition shrink-0 group">
-
                         <img src="https://cdn-icons-png.flaticon.com/512/3504/3504384.png"
                             class="w-8 h-8 invert group-hover:rotate-12 transition">
+
+
+
 
                         <span class="text-[10px] font-bold mt-1">VIEW 3D</span>
 
                     </div>
-
                 </div>
-
             </div>
-
-
-
             <div class="flex flex-col justify-center space-y-6">
-
                 <div>
-
                     <h1 id="p-title" class="text-5xl font-black text-slate-800 leading-tight">Loading...</h1>
-
                     <p id="p-price" class="text-3xl text-indigo-600 font-extrabold mt-3 italic"></p>
-
-
                 </div>
-
-
                 <div class="h-[2px] bg-slate-200 w-20"></div>
-
-
                 <p id="p-desc" class="text-slate-500 text-lg leading-relaxed"></p>
                 <p id="p-specs" class="text-slate-500 text-lg leading-relaxed"></p>
-
-
-
                 <div class="pt-6">
+
 
                     <button onclick="handleBooking()"
                         class="w-full md:w-auto bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-xl hover:bg-indigo-600 hover:scale-[1.02] transition-all">
-
                         Book Now
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-    <script src="chairs.js"></script>
-
+    <script src="table.js"></script>
     <script>
 
         window.onload = function () {
             const params = new URLSearchParams(window.location.search);
             const productId = params.get('id') || 0;
 
+
             // Ensure 'product' variable is coming from chairs.js
             currentItem = product.find(p => p.id == productId);
+
+
+
 
             if (currentItem) {
                 // 1. Text aur Price fill karein
@@ -157,41 +102,59 @@
                 document.getElementById('p-desc').innerHTML = currentItem.desc;
                 document.getElementById('p-specs').innerHTML = currentItem.specs;
 
+
+
+
                 // 2. Main Image set karein
                 const mainImg = document.getElementById('main-img');
                 mainImg.src = currentItem.img;
 
+
+
+
                 // 3. Thumbnails Container ko select karein
                 const container = document.getElementById('thumb-container');
+
 
                 // --- BLUE BUTTON HATANE KE LIYE ---
                 // Container ko clear kar rahe hain taaki sirf images dikhen
                 container.innerHTML = '';
+
+
+
 
                 // 4. Gallery images ko loop karke add karein
                 currentItem.gallery.forEach((url, index) => {
                     const img = document.createElement('img');
                     img.src = url;
 
+
                     // Design classes (Tailwind)
-                    img.className = `w-20 h-20 shrink-0 object-cover rounded-2xl cursor-pointer border-2 border-transparent hover:border-indigo-500 transition shadow-md`;
+                    img.className = ` w-20 h-20 shrink-0 object-cover rounded-2xl cursor-pointer border-2 border-transparent hover:border-indigo-500 transition shadow-md`;
+
 
                     // Default active state pehli image ke liye
                     if (index === 0) img.classList.add('border-indigo-600');
+
+
+
 
                     // --- CLICK LOGIC ---
                     img.onclick = () => {
                         // Badi image badal do
                         mainImg.src = url;
 
+
                         // Sab thumbnails se border hatao
                         document.querySelectorAll('#thumb-container img').forEach(t => {
                             t.classList.remove('border-indigo-600');
                         });
 
+
                         // Sirf clicked thumbnail pe border lagao
                         img.classList.add('border-indigo-600');
                     };
+
 
                     container.appendChild(img);
                 });
@@ -199,6 +162,12 @@
         };
     </script>
 
+
+
+
 </body>
+
+
+
 
 </html>

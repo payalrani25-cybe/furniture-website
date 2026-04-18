@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniture Shop</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>FurniCore - Home Page</title>
    
@@ -13,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
     <style>
+
+        
      
         :root {
             --primary: #1a1a1a;
@@ -227,28 +230,36 @@
             position: absolute; top: 15px; right: 20px;
             font-size: 24px; cursor: pointer; color: #777;
         }
+
+
     </style>
 </head>
 
 <body>
 
-    <header class="main-header"  style="display: flex; justify-content: space-between;" >
-     
-        <div class="container header-flex">
+     <header class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <a href="#" class="text-2xl font-extrabold text-yellow-400 tracking-wider">
+                Potodi Furniture
+            </a>
 
-            <nav class="nav-links">
-                <a href="home.html" target="_blank" class="translate" data-en="Home" data-hi="होम">Home</a>
-                <a href="about.html" target="_blank" class="translate" data-en="About" data-hi="हमारे बारे में">About</a>
-                <a href="chairs.html" target="_blank" class="translate" data-en="Furnitures"data-hi="फर्नीचर">Products</a>
-                <a href="contact.html" target="_blank" class="translate" data-en="Contact" data-hi="संपर्क करें">Contact</a>
-                <a href="history.html" target="_blank" class="translate" data-en="History" data-hi="इतिहास">History</a>
+            <nav class="flex flex-wrap justify-center gap-6 text-sm font-medium">
+                <a href="index.html"  class="hover:text-orange-400 transition-colors border-b-2 border-transparent hover:border-orange-600 pb-1">Home</a>
+                <a href="about.html" class="hover:text-orange-400 transition-colors border-b-2 border-transparent hover:border-orange-600 pb-1">About</a>
+                <a href="home.html"  class="hover:text-orange-400 transition-colors border-b-2 border-transparent hover:border-orange-600 pb-1">Products</a>
+                <a href="contact.html"  class="hover:text-orange-400 transition-colors border-b-2 border-transparent hover:border-orange-600 pb-1">Contact</a>
+                <a href="history.html"  class="hover:text-orange-400 transition-colors border-b-2 border-transparent hover:border-orange-600 pb-1">History</a>
+               <a href="reviews.html"  class="hover:text-orange-400 transition-colors border-b-2 border-transparent hover:border-orange-600 pb-1">Review</a>
             </nav>
 
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search furniture...">
-                <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-            </div>
 
+            <div class="relative w-full md:w-64">
+               <input type="search" id="searchInput" placeholder="Search furniture..." 
+                    onkeyup="searchProduct()"
+                    class="w-full bg-white text-slate-900 rounded-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm">
+
+            </div>
         </div>
     </header>
 
@@ -426,64 +437,76 @@
         </div>
     </div>
 
- <footer class="main-footer">
-        <div class="container footer-grid">
+<footer class="bg-[#1a2a3a] text-slate-300 py-8 mt-auto w-full border-t border-slate-700">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            
             <div class="footer-col">
-                <h3 class="translate" data-en="Get to Know Us" data-hi="हमारे बारे में जानें">Get to Know Us</h3>
-                <ul>
-                    <li><a href="#" class="translate" data-en="About" data-hi="फर्नीचर शॉप के बारे में">About </a></li>
-                    <li><a href="#" class="translate" data-en="Careers" data-hi="करियर">Furnitures</a></li>
-                    <li><a href="#" class="translate" data-en="Press Releases"
-                            data-hi="प्रेस विज्ञप्तियां">PressReleases</a></li>
+                <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block translate" 
+                    data-en="Get to Know Us" data-hi="हमारे बारे में जानें">
+                    Get to Know Us
+                </h3>
+                <ul class="space-y-1 text-[12px]">
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="About" data-hi="फर्नीचर शॉप के बारे में">About</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Careers" data-hi="करियर">Furnitures</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Press Releases" data-hi="प्रेस विज्ञप्तियां">Press Releases</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h3 class="translate" data-en="Let Us Help You" data-hi="हम आपकी मदद करें">Let Us Help You</h3>
-                <ul>
-                    <li><a href="#" class="translate" data-en="Your Account" data-hi="आपका खाता">Your Account</a></li>
-                    <li><a href="#" class="translate" data-en="Returns Centre" data-hi="रिटर्न सेंटर">Returns Centre</a>
-                    </li>
-                    <li><a href="#" class="translate" data-en="Help" data-hi="सहायता">Help</a></li>
+                <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block translate" 
+                    data-en="Let Us Help You" data-hi="हम आपकी मदद करें">
+                    Let Us Help You
+                </h3>
+                <ul class="space-y-1 text-[12px]">
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Your Account" data-hi="आपका खाता">Your Account</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Returns Centre" data-hi="रिटर्न सेंटर">Returns Centre</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Help" data-hi="सहायता">Help</a></li>
                 </ul>
             </div>
 
             <div class="footer-col fontChange">
-                <h3 class="translate" data-en="Connect with Us" data-hi="हमसे जुड़ें">Connect with Us</h3>
+                <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block translate" 
+                    data-en="Connect with Us" data-hi="हमसे जुड़ें">
+                    Connect with Us
+                </h3>
+                <div class="text-[12px] space-y-2">
+                    <p class="leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i>
+                        Main Road, Near Bus Stand, Jashpur (C.G.)
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-phone text-yellow-400 mr-2"></i>
+                        +91 98765 43210
+                    </p>
+                </div>
 
-                <p>
-                    Main Road, Near Bus Stand<br>
-                    Jashpur (C.G.)<br>
+                <div class="flex gap-4 mt-4">
+                    <a href="https://www.facebook.com" target="_blank" class="text-xl hover:text-white transition-transform hover:scale-110"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-xl hover:text-white transition-transform hover:scale-110"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-xl hover:text-white transition-transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
 
-                </p>
-
-                <p> +91 98765 43210</p>
-
-
-
-
-
-                <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-
+        <div class="mt-8 pt-4 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="relative group">
+                <button class="bg-slate-800 border border-slate-600 px-3 py-1 rounded text-[10px] flex items-center gap-2 hover:bg-slate-700">
+                    <i class="fa-solid fa-globe text-yellow-400"></i> Select Country
+                </button>
+                <div class="absolute bottom-full mb-2 left-0 hidden group-hover:block bg-slate-800 border border-slate-600 rounded shadow-xl min-w-[120px] overflow-hidden z-[100]">
+                    <div class="px-4 py-2 hover:bg-slate-700 cursor-pointer text-[11px]" onclick="selectCountry('India')">India</div>
+                    <div class="px-4 py-2 hover:bg-slate-700 cursor-pointer text-[11px]" onclick="selectCountry('United States')">United States</div>
+                </div>
             </div>
 
+            <p class="text-[10px] opacity-50 font-medium">
+                &copy; 2026 Potodi Furniture. All Rights Reserved.
+            </p>
         </div>
-
-
-
-
-        <div class="dropdown-menu" id="country-dropdown">
-            <div class="dropdown-item" onclick="selectCountry('India')">India</div>
-            <div class="dropdown-item" onclick="selectCountry('United States')">United States</div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-
-    </footer>
+    </div>
+</footer>
     <script>
         const productsDatabase = [
             { id: 1, name: "Sofas", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500", page: "sofas.html" },
@@ -494,15 +517,7 @@
             { id: 6, name: "Wardrobes", img: "https://m.media-amazon.com/images/I/61QQCZISxvL._AC_UF894,1000_QL80_.jpg", page: "wardrobes.html" },
             { id: 7, name: "Almari", img: "https://5.imimg.com/data5/SELLER/Default/2023/2/LA/AD/EX/109711794/almari-500x500.jpeg", page: "almari.html" },
             { id: 8, name: "Chairs", img:"https://supremefurniture.co.in/cdn/shop/files/Ornate-Red-Black.jpg?v=1706170905", page: "chairs.html" },
-            { id: 9, name: "Wall Shelf", img: "https://m.media-amazon.com/images/I/61wNbNgf8OL._AC_UF894,1000_QL80_.jpg", page: "wall-shelf.html" },
-            { id: 10, name: "Kichen Furniture", img: "https://www.livehomes.in/crm/public/image/blogs/1387843721716786872.jpg", page: "kitchen-furniture.html" },
-            { id: 11, name: "TV Unit", img: "https://m.media-amazon.com/images/I/71H8B1O5nVL.jpg", page: "tv-unit.html" },
-            { id: 13, name: "Velvet Ottoman", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ITkOYnLk0jbBVBAin2GWR9bIZcEmrQvwjA&s", page: "velvet-ottoman.html" },
-            { id: 14, name: "Shoe Rack", img: "https://www.squaro.in/cdn/shop/products/61klPvS39IL._AC_UF894_1000_QL80_FMwebp.webp?v=1679055889&width=1445", page: "shoe-rack.html" },
-            { id: 15, name: "Bar Stools", img: "https://www.makemychairs.com/cdn/shop/products/BRY.jpg?v=1697611716&width=1214", page: "bar-stools.html" },
-            { id: 17, name: "Walnut Wardrobe", img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=500", page: "walnut-wardrobe.html" },
-            { id: 20, name: "Metal Bed Frame", img: "https://cdn.shopify.com/s/files/1/0181/1795/files/Single_Block_Bed_in_Black.jpg", page: "metal-bed-frame.html" }
-        ];
+    ]
 
 
         // 1. Display All Products

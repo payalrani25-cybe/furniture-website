@@ -23,6 +23,32 @@ function changeLanguage(lang) {
 }
 window.changeLanguage = changeLanguage;
 
+
+function searchProduct() {
+    const input = document.getElementById('searchInput');
+    if (!input) return;
+
+    const searchVal = input.value.toLowerCase().trim();
+
+    // agar empty hai → sab dikhao
+    if (searchVal === "") {
+        displayProducts(productsDatabase);
+        document.getElementById('grid-title').innerText = "All Products";
+        return;
+    }
+
+    const filtered = productsDatabase.filter(product =>
+        product.name.toLowerCase().includes(searchVal)
+    );
+
+    displayProducts(filtered);
+
+    document.getElementById('grid-title').innerText =
+        filtered.length > 0
+            ? `Results for "${searchVal}"`
+            : "No products found";
+}
+
 // Country Selector
 function selectCountry(country) {
     const currentCountry = document.getElementById('current-country');

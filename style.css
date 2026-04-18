@@ -1,4 +1,4 @@
-/* ================= FOOTER CSS (Your Original with Full Width Fix) ================= */
+
 .recommendation-bar {
     text-align: center;
     padding: 30px 0;
@@ -189,11 +189,11 @@ header {
 }
 
 /* 1. Left side nav links */
-.nav-links {
+/* .nav-links {
     display: flex;
-    gap: 20px; /* Links ke beech ka gap */
+    gap: 20px; 
     flex-wrap: wrap;
-    flex: 1; /* Ye nav ko stretch karke search bar ko aage dhakelega */
+    flex: 1; 
 }
 
 .nav-links a {
@@ -202,15 +202,15 @@ header {
     font-size: 14px;
     font-weight: bold;
     transition: color 0.2s;
-    white-space: nowrap; /* Text next line me wrap nahi hoga */
+    white-space: nowrap; 
 }
 
 .nav-links a:hover {
     color: #d15a24;
-}
+} */
 
 /* 2. Middle Search Box */
-.search-container {
+/* .search-container {
     position: relative;
     width: 300px;
 }
@@ -235,10 +235,10 @@ header {
     top: 12px;
     color: #666;
     cursor: pointer;
-}
+} */
 
 /* 3. Right Side Icons */
-.header-actions { 
+/* .header-actions { 
     display: flex; 
     align-items: center; 
     justify-content: flex-end;
@@ -264,10 +264,10 @@ header {
     font-size: 11px; width: 18px; height: 18px;
     border-radius: 50%; display: flex;
     align-items: center; justify-content: center;
-}
+} */
 
 /* Responsive Media Queries for Mobile */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .header-flex { 
         flex-direction: column; 
         text-align: center; 
@@ -283,7 +283,7 @@ header {
         margin-top: 10px; 
         justify-content: center; 
     }
-}
+} */
 
 .sub-footer {
     background-color: #131a22;
