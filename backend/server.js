@@ -18,14 +18,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/data", (req, res) => {
-    res.json({ message: "Hello from backend" });
-});
-
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
-
 // ✅ Serve frontend folder as static files
 app.use(express.static(path.join(__dirname, '../frontend')));
 

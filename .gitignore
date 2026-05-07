@@ -1,4 +1,18 @@
-
-
-#Ignore vscode AI rules
+# Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
