@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Patodi Furniture Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0f172a;
+            overflow: hidden;
+        }
+
+        .lux-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-lux {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .input-lux:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #eab308;
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.1);
+            outline: none;
+        }
+
+        .floating-bg {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(234, 179, 8, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(50px);
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(-10%, -10%);
+            }
+
+            to {
+                transform: translate(10%, 10%);
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+    <div class="floating-bg"></div>
+    <div class="floating-bg" style="bottom: 0; right: 0; animation-delay: -10s;"></div>
+
+    <div class="glass-card p-10 rounded-[3rem] w-full max-w-md animate-fade-in">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-black text-yellow-500 tracking-tighter mb-2">PATODI</h1>
+            <p class="text-slate-400 text-sm tracking-widest uppercase">Luxury Furniture Studio</p>
+        </div>
+
+        <div id="auth-forms">
+            <!-- Login Form -->
+            <form id="login-form" class="space-y-6">
+                <h2 class="text-2xl font-bold text-white mb-6">Welcome Back</h2>
+                <div class="space-y-4">
+                    <div class="relative">
+                        <i class="fa-regular fa-envelope absolute left-4 top-4 text-slate-500"></i>
+                        <input type="email" id="login-email" placeholder="Email Address" required
+                            class="input-lux w-full pl-12 pr-4 py-4 rounded-2xl text-sm">
+                    </div>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-4 top-4 text-slate-500"></i>
+
+                        <input type="password" id="login-password" placeholder="Password" required
+                            class="input-lux w-full pl-12 pr-12 py-4 rounded-2xl text-sm">
+
+                        <i id="togglePassword"
+                            class="fa-solid fa-eye absolute right-4 top-4 text-slate-500 cursor-pointer"></i>
+                    </div>
+
+                </div>
+                <button type="submit"
+                    class="w-full bg-yellow-500 text-slate-900 font-bold py-4 rounded-2xl hover:bg-white transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-yellow-500/10">
+                    SIGN IN
+                </button>
+                <p class="text-center text-slate-500 text-xs mt-6">
+                    Don't have an account? <a href="#" onclick="toggleForm()"
+                        class="text-yellow-500 font-bold hover:underline">Create One</a>
+                </p>
+            </form>
+
+            <!-- Register Form (Hidden by default) -->
+            <form id="register-form" class="space-y-6 hidden">
+                <h2 class="text-2xl font-bold text-white mb-6">Create Account</h2>
+                <div class="space-y-4">
+                    <div class="relative">
+                        <i class="fa-regular fa-user absolute left-4 top-4 text-slate-500"></i>
+                        <input type="text" id="reg-name" placeholder="Full Name" required
+                            class="input-lux w-full pl-12 pr-4 py-4 rounded-2xl text-sm">
+                    </div>
+                    <div class="relative">
+                        <i class="fa-regular fa-envelope absolute left-4 top-4 text-slate-500"></i>
+                        <input type="email" id="reg-email" placeholder="Email Address" required
+                            class="input-lux w-full pl-12 pr-4 py-4 rounded-2xl text-sm">
+                    </div>
+
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-4 top-4 text-slate-500"></i>
+                        <input type="password" id="reg-password" placeholder="Create Password" required
+                            class="input-lux w-full pl-12 pr-4 py-4 rounded-2xl text-sm">
+                    </div>
+                </div>
+                <button type="submit"
+                    class="w-full bg-yellow-500 text-slate-900 font-bold py-4 rounded-2xl hover:bg-white transition-all transform hover:scale-[1.02]">
+                    CREATE ACCOUNT
+                </button>
+                <p class="text-center text-slate-500 text-xs mt-6">
+                    Already have an account? <a href="#" onclick="toggleForm()"
+                        class="text-yellow-500 font-bold hover:underline">Sign In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+
+        // If already logged in, skip login page
+        if (localStorage.getItem('token')) {
+            window.location.href = 'index.html';
+        }
+
+        function toggleForm() {
+            document.getElementById('login-form').classList.toggle('hidden');
+            document.getElementById('register-form').classList.toggle('hidden');
+        }
+
+        // Login Handler
+        document.getElementById('login-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const res = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = 'index.html';
+                } else {
+                    alert(data.message);
+                }
+            } catch (err) {
+                alert('Server connection failed');
+            }
+        };
+
+        // Register Handler
+        document.getElementById('register-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            try {
+                const res = await fetch(`${API_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('Registration successful! Please login.');
+                    toggleForm();
+                } else {
+                    alert(data.message);
+                }
+            } catch (err) {
+                alert('Server connection failed');
+            }
+        };
+
+
+const password = document.getElementById("login-password");
+const toggle = document.getElementById("togglePassword");
+
+toggle.addEventListener("click", function () {
+    if (password.type === "password") {
+        password.type = "text";
+        toggle.classList.remove("fa-eye-slash");
+        toggle.classList.add("fa-eye");
+    } else {
+        password.type = "password";
+        toggle.classList.remove("fa-eye");
+        toggle.classList.add("fa-eye-slash");
+    }
+});
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>FurniCore - Home Page</title>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <style>
+
+        
+     
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c8a165;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --grey-text: #666666;
+            --light-grey: #e4e4e4;
+            --transition: all 0.3s ease;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+
+        button { cursor: pointer; border: none; outline: none; }
+
+
+        .hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1500') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+
+        .hero h2 { font-size: 38px; font-weight: 700; margin-bottom: 10px; }
+        .hero p { font-size: 16px; opacity: 0.9; margin-bottom: 20px; }
+
+      
+       
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 5%;
+            margin-bottom: 60px;
+        }
+
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+
+
+        .prod-img-wrapper {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .prod-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+
+        .prod-info {
+            padding: 15px;
+            text-align: center;
+        }
+       
+        .prod-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+    
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            background: none;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+
+        .faq-question:hover {
+            color: var(--secondary);
+        }
+
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            font-size: 14px;
+        }
+
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: #fcfcfc;
+        }
+
+
+        .faq-answer p {
+            padding: 20px;
+            color: var(--grey-text);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* एक्टिव क्लास के लिए स्टाइल */
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* पर्याप्त ऊंचाई ताकि टेक्स्ट पूरा दिखे */
+        }
+
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+
+        .auth-overlay-page {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .auth-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .auth-box h2 { margin-bottom: 10px; font-weight: 700;}
+        .auth-box input {
+            width: 100%; padding: 12px;
+            margin: 8px 0; border: 1px solid var(--light-grey);
+            border-radius: 4px; outline: none;
+        }
+        .auth-box input:focus { border-color: var(--secondary); }
+
+
+        .auth-submit-btn {
+            width: 100%; padding: 12px;
+            background: var(--secondary); color: var(--white);
+            font-weight: 600; border-radius: 4px; margin-top: 10px;
+            transition: var(--transition);
+        }
+        .auth-submit-btn:hover { background: var(--primary); }
+
+
+        .close-auth {
+            position: absolute; top: 15px; right: 20px;
+            font-size: 24px; cursor: pointer; color: #777;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+     
+    <script src="header.js"></script>
+    <link rel="stylesheet" href="header-premium.css">
+
+
+
+
+
+    <section class="hero">
+        <h2>Modern Furniture for Modern Living</h2>
+        <p>Explore our premium gallery and give your home a luxurious touch.</p>
+    </section>
+
+    <!-- Category Navigation Strip (Meesho-style, filters on-page) -->
+    <div class="container mx-auto px-6 -mt-12 relative z-10 mb-16">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <button onclick="filterByCategory('sofas','Sofas')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="sofas">
+                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                    <i class="fa-solid fa-couch text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Sofa</span>
+            </button>
+            <button onclick="filterByCategory('beds','Beds')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="beds">
+                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                    <i class="fa-solid fa-bed text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Beds</span>
+            </button>
+            <button onclick="filterByCategory('chairs','Chairs')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="chairs">
+                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                    <i class="fa-solid fa-chair text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Chairs</span>
+            </button>
+            <button onclick="filterByCategory('almira','Almirah')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="almira">
+                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                    <i class="fa-solid fa-door-closed text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Almirah</span>
+            </button>
+            <button onclick="filterByCategory('table','Tables')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="table">
+                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                    <i class="fa-solid fa-table-columns text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+                </div>
+                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Tables</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="products-section" class="px-6 md:px-16">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-black text-[#1a2a3a]" id="grid-title">All Products</h2>
+            <button onclick="filterByCategory('all','All Products')" id="clear-filter-btn" class="hidden text-xs font-bold text-[#c8a165] border border-[#c8a165] px-4 py-2 rounded-full hover:bg-[#c8a165] hover:text-white transition-all">✕ Clear Filter</button>
+        </div>
+        <section class="products-grid" id="products-container"></section>
+    </div>
+
+
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <section class="faq-section">
+       
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Can I buy furniture online?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>No, you can only book products online. You need to visit the shop to complete the purchase.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+           What does booking mean?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Booking means reserving a product so it is held for you.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                  What should I do after booking?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>You need to visit the shop and complete the payment to collect the product.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+            Is booking free?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Yes, booking is completely free.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+               How long is the booking valid?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Booking is valid for 24–48 hours.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Can I cancel my booking?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+            <p>Yes, you can cancel your booking anytime.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+               Will I receive a booking confirmation?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Yes, you will receive a confirmation message or email.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+             Can the product be sold out after booking?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>No, once booked, the product is reserved for you.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                What are the shop opening hours?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>The shop is open from 10 AM to 8 PM.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Can I see the product before buying?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Yes, you can check the product at the shop.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Where is the shop located?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>You can find the location details on the Contact page.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Booking ke baad kya karna hoga?
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Aapko shop visit karna hoga aur wahaan payment karke product lena hoga.</p>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <div class="auth-overlay-page" id="auth-page">
+        <div class="auth-box">
+            <span class="close-auth" onclick="toggleAuthPage()">×</span>
+            <h2>Create Account</h2>
+            <p style="color: #777; margin-bottom: 20px; font-size: 14px;">Join us to get exclusive furniture deals!</p>
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email Address">
+            <input type="password" placeholder="Password">
+            <button class="auth-submit-btn" onclick="toggleAuthPage()">Sign Up</button>
+        </div>
+    </div>
+
+<footer class="bg-[#1a2a3a] text-slate-300 py-8 mt-auto w-full border-t border-slate-700">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            
+            <div class="footer-col">
+                <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block translate" 
+                    data-en="Get to Know Us" data-hi="हमारे बारे में जानें">
+                    Get to Know Us
+                </h3>
+                <ul class="space-y-1 text-[12px]">
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="About" data-hi="फर्नीचर शॉप के बारे में">About</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Careers" data-hi="करियर">Furnitures</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Press Releases" data-hi="प्रेस विज्ञप्तियां">Press Releases</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block translate" 
+                    data-en="Let Us Help You" data-hi="हम आपकी मदद करें">
+                    Let Us Help You
+                </h3>
+                <ul class="space-y-1 text-[12px]">
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Your Account" data-hi="आपका खाता">Your Account</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Returns Centre" data-hi="रिटर्न सेंटर">Returns Centre</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors translate" data-en="Help" data-hi="सहायता">Help</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col fontChange">
+                <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block translate" 
+                    data-en="Connect with Us" data-hi="हमसे जुड़ें">
+                    Connect with Us
+                </h3>
+                <div class="text-[12px] space-y-2">
+                    <p class="leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i>
+                        Main Road, Near Bus Stand, Jashpur (C.G.)
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-phone text-yellow-400 mr-2"></i>
+                        +91 98765 43210
+                    </p>
+                </div>
+
+                <div class="flex gap-4 mt-4">
+                    <a href="https://www.facebook.com" target="_blank" class="text-xl hover:text-white transition-transform hover:scale-110"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-xl hover:text-white transition-transform hover:scale-110"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-xl hover:text-white transition-transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <div class="relative group">
+                <button class="bg-slate-800 border border-slate-600 px-3 py-1 rounded text-[10px] flex items-center gap-2 hover:bg-slate-700">
+                    <i class="fa-solid fa-globe text-yellow-400"></i> Select Country
+                </button>
+                <div class="absolute bottom-full mb-2 left-0 hidden group-hover:block bg-slate-800 border border-slate-600 rounded shadow-xl min-w-[120px] overflow-hidden z-[100]">
+                    <div class="px-4 py-2 hover:bg-slate-700 cursor-pointer text-[11px]" onclick="selectCountry('India')">India</div>
+                    <div class="px-4 py-2 hover:bg-slate-700 cursor-pointer text-[11px]" onclick="selectCountry('United States')">United States</div>
+                </div>
+            </div>
+
+            <p class="text-[10px] opacity-50 font-medium">
+                &copy; 2026 Patodi Furniture. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+    <script>
+        let _allProductsCache = [];
+
+        // 1. Load all products
+        async function loadProducts(query, category) {
+            try {
+                const res = await fetch(`${API_URL}/products`);
+                _allProductsCache = await res.json();
+
+                let filtered = _allProductsCache;
+                if (category && category !== 'all') {
+                    filtered = filtered.filter(p => p.category === category);
+                }
+                if (query) {
+                    const q = query.toLowerCase();
+                    filtered = filtered.filter(p =>
+                        p.title.toLowerCase().includes(q) ||
+                        p.category.toLowerCase().includes(q) ||
+                        (p.desc||'').toLowerCase().includes(q)
+                    );
+                    document.getElementById('grid-title').innerText = `Results for "${query}"` ;
+                }
+                displayProducts(filtered);
+            } catch (err) {
+                console.error("Failed to load products", err);
+            }
+        }
+
+        // 2. Filter by category (on-page, Meesho style)
+        function filterByCategory(cat, label) {
+            const clearBtn = document.getElementById('clear-filter-btn');
+            // highlight active
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.style.borderColor = b.dataset.cat === cat ? '#c8a165' : 'transparent';
+                b.style.background = b.dataset.cat === cat ? '#fff8ee' : 'white';
+            });
+            if (cat === 'all') {
+                clearBtn.classList.add('hidden');
+                document.getElementById('grid-title').innerText = 'All Products';
+                displayProducts(_allProductsCache);
+            } else {
+                clearBtn.classList.remove('hidden');
+                document.getElementById('grid-title').innerText = label;
+                displayProducts(_allProductsCache.filter(p => p.category === cat));
+                document.getElementById('products-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function displayProducts(items) {
+            const container = document.getElementById('products-container');
+            if (!items || items.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-20 text-center text-slate-400 text-xl">No products found 😕</div>`;
+                return;
+            }
+            container.innerHTML = '';
+            items.forEach((item) => {
+                const link = `details.html?id=${item.id}`;
+                const itemStr = JSON.stringify(item).replace(/"/g, '&quot;');
+                container.innerHTML += `
+                    <div class="product-card bg-white rounded-[2rem] p-4 shadow-sm border border-gray-100 group transition-all hover:shadow-2xl relative">
+                        <div class="relative overflow-hidden rounded-[1.5rem] mb-4 h-64 bg-slate-50">
+                            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 cursor-pointer"
+                                 onclick="window.location.href='${link}'">
+                            <button onclick="event.stopPropagation(); toggleWishGlobal(${itemStr})" 
+                                    class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg z-10 hover:bg-red-50 transition-colors">
+                                <i class="fa-regular fa-heart text-red-500 text-lg"></i>
+                            </button>
+                            <span class="absolute bottom-3 left-3 bg-black/60 text-white text-[10px] font-bold px-3 py-1 rounded-full capitalize">${item.category}</span>
+                        </div>
+                        <div class="px-2">
+                            <h3 class="text-lg font-bold text-slate-800 line-clamp-1">${item.title}</h3>
+                            <div class="flex items-center gap-1 mt-1">
+                                <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                <span class="text-xs text-slate-500 font-medium">${item.rating || 4.5}</span>
+                            </div>
+                            <p class="text-[#c8a165] font-black text-xl mt-1">₹${item.price.toLocaleString()}</p>
+                            <div class="flex gap-2 mt-4">
+                                <button onclick="addToCartGlobal(${itemStr})" 
+                                        class="flex-1 bg-[#1a2a3a] text-white py-3 rounded-xl font-bold text-xs hover:bg-[#c8a165] hover:text-[#1a2a3a] transition-all">
+                                    🛒 Add To Cart
+                                </button>
+                                <button onclick="window.location.href='${link}'" 
+                                        class="px-4 bg-slate-100 text-slate-800 py-3 rounded-xl font-bold text-xs hover:bg-slate-200 transition-all">
+                                    Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // 3. On load: check URL params for search/category
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlSearch = urlParams.get('search');
+        const urlCategory = urlParams.get('category');
+        loadProducts(urlSearch, urlCategory);
+
+        // 4. Auth Modal Toggle
+        function toggleAuthPage() {
+            const page = document.getElementById('auth-page');
+            page.style.display = (page.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // 5. FAQ Accordion Logic
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            if(faqItem.classList.contains('active')) {
+                faqItem.classList.remove('active');
+            } else {
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

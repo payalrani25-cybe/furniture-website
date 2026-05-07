@@ -1,0 +1,72 @@
+/* Premium Header Styles */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-gold: #c8a165;
+    --deep-blue: #1a2a3a;
+}
+
+.premium-header {
+    background: var(--deep-blue);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-header.scrolled {
+    padding: 10px 0;
+    background: rgba(26, 42, 58, 0.95);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.search-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(200, 161, 101, 0.2);
+}
+
+.badge-glow {
+    box-shadow: 0 0 10px rgba(200, 161, 101, 0.5);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.premium-header {
+    animation: fadeInDown 0.8s ease-out;
+}

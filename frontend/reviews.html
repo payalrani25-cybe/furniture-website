@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Patodi Furniture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+        .star-active { color: #fbbf24; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-slate-50 font-sans antialiased">
+
+    
+        <script src="header.js"></script>
+    <link rel="stylesheet" href="header-premium.css">
+
+
+
+
+
+    <main class="flex-grow container mx-auto px-4 py-10 max-w-5xl">  
+       
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">Customer Reviews</h1>
+            <p class="text-slate-600">Sahi feedback padhein aur apna anubhav share karein.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-8 border border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="text-center md:border-r border-slate-100">
+                <p class="font-semibold text-slate-700">Overall Rating</p>
+                <div class="text-yellow-400 text-3xl mt-1">
+                    <span id="avg-rating">5.0</span> <i class="fas fa-star text-2xl"></i>
+                </div>
+                <p class="text-xs text-slate-400 mt-1"><span id="total-count">1</span> Reviews</p>
+            </div>
+            <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs w-10">5 Star</span>
+                    <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div id="bar-5" class="bg-yellow-400 h-full transition-all duration-500" style="width: 100%"></div>
+                    </div>
+                    <span id="percent-5" class="text-xs w-8 text-right">100%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs w-10">4 Star</span>
+                    <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div id="bar-4" class="bg-yellow-400 h-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                    <span id="percent-4" class="text-xs w-8 text-right">0%</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-400">
+                    <span class="text-xs w-10">3 Star</span>
+                    <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div id="bar-3" class="bg-yellow-400 h-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                    <span id="percent-3" class="text-xs w-8 text-right">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center mb-8">
+            <button type="button" id="show-form-btn" class="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-3 px-6 rounded-lg shadow-md transition-all active:scale-95">
+                <i class="fa-solid fa-pen-to-square mr-2"></i> Write a review
+            </button>
+        </div>
+
+        <div id="review-form-box" class="hidden bg-white rounded-2xl shadow-xl p-8 mb-8 animate-fade-in border border-slate-100">
+            <h2 class="text-2xl font-bold mb-6">Share Your Experience</h2>
+            <form id="review-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Your Rating:*</label>
+                    <div id="star-input-wrapper" class="text-3xl text-slate-300 space-x-1 cursor-pointer">
+                        <i class="far fa-star" data-value="1"></i>
+                        <i class="far fa-star" data-value="2"></i>
+                        <i class="far fa-star" data-value="3"></i>
+                        <i class="far fa-star" data-value="4"></i>
+                        <i class="far fa-star" data-value="5"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="form-name" placeholder="Your Name" required class="w-full border border-slate-200 rounded-lg p-3 outline-none focus:border-yellow-400">
+                    <input type="text" id="form-email" placeholder="Email (abc@gmail.com)" required class="w-full border border-slate-200 rounded-lg p-3 outline-none focus:border-yellow-400">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="form-product" placeholder="Purchased Furniture" required class="w-full border border-slate-200 rounded-lg p-3 outline-none focus:border-yellow-400">
+                    <input type="text" id="form-title" placeholder="Review Title" class="w-full border border-slate-200 rounded-lg p-3 outline-none focus:border-yellow-400">
+                </div>
+                <textarea id="form-text" rows="4" placeholder="Your Feedback..." required class="w-full border border-slate-200 rounded-lg p-3 outline-none focus:border-yellow-400"></textarea>
+                <div class="flex gap-4 pt-4">
+                    <button type="submit" class="flex-[2] bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-black transition-colors">Submit Review</button>
+                    <button type="button" id="cancel-form-btn" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-lg hover:bg-slate-200">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="reviews-list" class="space-y-6">
+            <div class="review-card bg-white rounded-xl shadow-sm p-6 flex flex-col md:flex-row gap-6 border border-slate-50 relative group transition-all hover:shadow-md" data-rating="5">
+                <div class="md:w-48 flex md:flex-col items-center gap-4 text-center md:border-r border-slate-100 pr-0 md:pr-6 text-slate-800">
+                    <i class="fa-solid fa-user-circle text-5xl text-slate-300"></i>
+                    <div class="overflow-hidden w-full">
+                        <p class="font-bold text-sm truncate">Rahat Khan</p>
+                        <p class="text-[10px] text-slate-500 truncate mb-1">rahat@example.com</p>
+                        <p class="text-[10px] text-orange-600 font-bold uppercase bg-orange-50 py-1 rounded">Premium Desk</p>
+                    </div>
+                </div>
+                <div class="flex-1 pr-12">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs text-slate-400">Apr 11, 2026</span>
+                        <div class="text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="font-bold italic text-slate-800">"Perfect for Home Office!"</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mt-2">Excellent wood quality and easy assembly. Value for money!</p>
+                </div>
+                <button onclick="deleteReview(this)" class="absolute top-4 right-4 bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all w-8 h-8 rounded-full flex items-center justify-center border border-red-100 shadow-sm">
+                    <i class="fa-solid fa-trash-can text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#1a2a3a] text-slate-300 py-8 mt-auto w-full border-t border-slate-700">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="footer-col">
+                    <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block">Get to Know Us</h3>
+                    <ul class="space-y-1 text-[12px]">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Furnitures</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block">Connect with Us</h3>
+                    <div class="text-[12px] space-y-2">
+                        <p class="leading-relaxed"><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i>Main Road, Jashpur (C.G.)</p>
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i>+91 98765 43210</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-700 text-center text-[10px]">
+                <p class="opacity-50">&copy; 2026 Potodi Furniture. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const doc = document;
+        let selectedRating = 0;
+        const reviewForm = doc.getElementById('review-form');
+        const starIcons = doc.querySelectorAll('#star-input-wrapper i');
+        const reviewsList = doc.getElementById('reviews-list');
+
+        // Toggle Form
+        doc.getElementById('show-form-btn').addEventListener('click', () => doc.getElementById('review-form-box').classList.remove('hidden'));
+        doc.getElementById('cancel-form-btn').addEventListener('click', () => doc.getElementById('review-form-box').classList.add('hidden'));
+
+        // Logic to update Percentages & Bars
+        function updateStats() {
+            const cards = doc.querySelectorAll('.review-card');
+            const total = cards.length;
+            doc.getElementById('total-count').innerText = total;
+
+            if (total === 0) {
+                doc.getElementById('avg-rating').innerText = "0.0";
+                [3, 4, 5].forEach(num => {
+                    doc.getElementById(`bar-${num}`).style.width = "0%";
+                    doc.getElementById(`percent-${num}`).innerText = "0%";
+                });
+                return;
+            }
+
+            let sum = 0;
+            let counts = { 5: 0, 4: 0, 3: 0 };
+
+            cards.forEach(card => {
+                const r = parseInt(card.getAttribute('data-rating'));
+                sum += r;
+                if (r >= 3) counts[r] = (counts[r] || 0) + 1;
+            });
+
+            // Update Average
+            doc.getElementById('avg-rating').innerText = (sum / total).toFixed(1);
+
+            // Update Bars and Percentages
+            [3, 4, 5].forEach(num => {
+                const percentage = Math.round((counts[num] / total) * 100);
+                doc.getElementById(`bar-${num}`).style.width = percentage + "%";
+                doc.getElementById(`percent-${num}`).innerText = percentage + "%";
+            });
+        }
+
+        // Delete Function
+        window.deleteReview = function(btn) {
+            btn.closest('.review-card').remove();
+            updateStats();
+        }
+
+        // Star Selection
+        starIcons.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.getAttribute('data-value'));
+                starIcons.forEach((s, index) => {
+                    index < selectedRating ? s.classList.replace('far', 'fas') : s.classList.replace('fas', 'far');
+                    index < selectedRating ? s.classList.add('text-yellow-400') : s.classList.remove('text-yellow-400');
+                });
+            });
+        });
+
+        // Submit Logic
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = doc.getElementById('form-email').value.trim();
+            const name = doc.getElementById('form-name').value.trim();
+            const product = doc.getElementById('form-product').value.trim();
+            const title = doc.getElementById('form-title').value.trim() || "Review";
+            const text = doc.getElementById('form-text').value.trim();
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) return alert('Sahi email dalein!');
+            if (selectedRating === 0) return alert('Rating select karein!');
+
+            let starHTML = "";
+            for (let i = 1; i <= 5; i++) {
+                starHTML += i <= selectedRating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+            }
+
+            const card = doc.createElement('div');
+            card.className = "review-card bg-white rounded-xl shadow-sm p-6 flex flex-col md:flex-row gap-6 border border-slate-50 animate-fade-in relative hover:shadow-md transition-all";
+            card.setAttribute('data-rating', selectedRating);
+            card.innerHTML = `
+                <div class="md:w-48 flex md:flex-col items-center gap-4 text-center md:border-r border-slate-100 pr-0 md:pr-6 text-slate-800">
+                    <i class="fa-solid fa-user-circle text-5xl text-slate-300"></i>
+                    <div class="overflow-hidden w-full">
+                        <p class="font-bold text-sm truncate">${name}</p>
+                        <p class="text-[10px] text-slate-500 truncate mb-1">${email}</p>
+                        <p class="text-[10px] text-orange-600 font-bold uppercase bg-orange-50 py-1 rounded">${product}</p>
+                    </div>
+                </div>
+                <div class="flex-1 pr-12">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs text-slate-400">Just Now</span>
+                        <div class="text-yellow-400 text-xs">${starHTML}</div>
+                    </div>
+                    <p class="font-bold italic text-slate-800">"${title}"</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mt-2">${text}</p>
+                </div>
+                <button onclick="deleteReview(this)" class="absolute top-4 right-4 bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all w-8 h-8 rounded-full flex items-center justify-center border border-red-100 shadow-sm">
+                    <i class="fa-solid fa-trash-can text-sm"></i>
+                </button>`;
+           
+            reviewsList.prepend(card);
+            updateStats();
+            reviewForm.reset();
+            selectedRating = 0;
+            starIcons.forEach(s => { s.classList.replace('fas', 'far'); s.classList.remove('text-yellow-400'); });
+            doc.getElementById('review-form-box').classList.add('hidden');
+        });
+
+        // Initialize Stats on Load
+        updateStats();
+    </script>
+</body>
+</html>

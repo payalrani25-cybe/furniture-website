@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - Patodi Furniture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c8a165; 
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --grey-text: #666666;
+            --border: #e4e4e4;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Table Styling */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #fafafa;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Status Pills */
+        .status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status.booked { background-color: #e3fcef; color: #00875a; }
+        .status.pending { background-color: #fffae6; color: #ff8b00; }
+
+        .btn-clear {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: var(--transition);
+        }
+        .btn-clear:hover { background-color: #cc0000; }
+
+        .btn-book {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+    </style>
+</head>
+<body>
+
+    
+      <script src="header.js"></script>
+    <link rel="stylesheet" href="header-premium.css">
+
+
+
+    <main class="flex-grow container mx-auto px-6 py-10 w-full">
+        
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-3xl font-bold">Order Management</h2>
+                <p class="text-slate-500 italic">View and track your furniture bookings.</p>
+            </div>
+            <button class="btn-book" onclick="simulateBooking()">
+                <i class="fa-solid fa-plus mr-2"></i>New Demo Order
+            </button>
+        </div>
+
+        <div class="section">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold border-l-4 border-yellow-400 pl-3">My Order History</h3>
+                <button class="btn-clear" onclick="clearHistory()">Clear History</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Furniture Item</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section border-t-4 border-[#c8a165]">
+            <h3 class="text-xl font-bold mb-2">Shopkeeper Dashboard</h3>
+            <p class="text-sm text-slate-500 mb-4">Internal view for managing customer details.</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Phone</th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="shop-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#1a2a3a] text-slate-300 py-8 w-full border-t border-slate-700">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block">Get to Know Us</h3>
+                    <ul class="space-y-1 text-[12px]">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Furnitures</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block">Let Us Help You</h3>
+                    <ul class="space-y-1 text-[12px]">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Your Account</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Returns Centre</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-sm mb-3 border-b border-slate-700 pb-1 inline-block">Connect with Us</h3>
+                    <div class="text-[12px] space-y-2">
+                        <p><i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i>Main Road, Near Bus Stand, Jashpur (C.G.)</p>
+                        <p><i class="fa-solid fa-phone text-yellow-400 mr-2"></i>+91 98765 43210</p>
+                    </div>
+                    <div class="flex gap-4 mt-4">
+                        <a href="#" class="text-xl hover:text-white transition-all"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-xl hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-700 flex justify-between items-center text-[10px] opacity-50">
+                <p>&copy; 2026 Patodi Furniture. All Rights Reserved.</p>
+                <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-600">India</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const defaultOrders = [
+            { id: "#ORD901", name: "Alex Johnson", phone: "9876543210", item: "Luxury Yellow Sofa", date: "2026-04-02", price: "₹24,999", status: "booked" },
+            { id: "#ORD902", name: "Priya Sharma", phone: "8765432109", item: "Wooden Queen Bed", date: "2026-04-03", price: "₹32,000", status: "pending" }
+        ];
+
+        function loadHistory() {
+            let orders = JSON.parse(localStorage.getItem('furnitureOrders')) || defaultOrders;
+            const userTable = document.getElementById('user-table-body');
+            const shopTable = document.getElementById('shop-table-body');
+            
+            userTable.innerHTML = '';
+            shopTable.innerHTML = '';
+
+            orders.forEach(order => {
+                userTable.innerHTML += `
+                    <tr>
+                        <td><b>${order.id}</b></td>
+                        <td>${order.item}</td>
+                        <td>${order.date}</td>
+                        <td>${order.price}</td>
+                        <td><span class="status ${order.status}">${order.status}</span></td>
+                    </tr>`;
+                shopTable.innerHTML += `
+                    <tr>
+                        <td><b>${order.id}</b></td>
+                        <td>${order.name}</td>
+                        <td>${order.phone}</td>
+                        <td>${order.item}</td>
+                        <td>${order.price}</td>
+                        <td><span class="status ${order.status}">${order.status}</span></td>
+                    </tr>`;
+            });
+        }
+
+        function simulateBooking() {
+            let orders = JSON.parse(localStorage.getItem('furnitureOrders')) || defaultOrders;
+            const newOrder = {
+                id: "#ORD" + Math.floor(100 + Math.random() * 900),
+                name: "Guest User",
+                phone: "9123456789",
+                item: "Modern Centre Table",
+                date: new Date().toISOString().slice(0, 10),
+                price: "₹8,500",
+                status: "booked"
+            };
+            orders.push(newOrder);
+            localStorage.setItem('furnitureOrders', JSON.stringify(orders));
+            loadHistory();
+        }
+
+        function clearHistory() {
+            localStorage.setItem('furnitureOrders', JSON.stringify([]));
+            loadHistory();
+        }
+
+        loadHistory();
+
+
+
+
+
+        // --- SEARCH FUNCTIONALITY ---
+document.addEventListener('keyup', function(e) {
+    // Check karna ki kya user search input mein type kar raha hai
+    if (e.target.placeholder === "Search furniture...") {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        // Dono tables ki rows ko pakadna
+        const userRows = document.querySelectorAll('#user-table-body tr');
+        const shopRows = document.querySelectorAll('#shop-table-body tr');
+
+        // User Table Filter
+        userRows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(searchTerm) ? '' : 'none';
+        });
+
+        // Shopkeeper Table Filter
+        shopRows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(searchTerm) ? '' : 'none';
+        });
+    }
+});
+    </script>
+</body>
+</html>
