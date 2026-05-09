@@ -1,11 +1,15 @@
+// 1. Firebase Imports (Vite style)
+// recreated_scriipt.js ke top par ye likhein
+import { db } from './firebaseConfig.js';
+import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// 2. UI Logic (Sidebar & Theme)
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.querySelector('#menu_bar');
 const closeBtn = document.querySelector('#close_btn');
 const container = document.querySelector('.container');
 const themeToggler = document.querySelector('.theme-toggler');
 const menuBtnMobile = document.querySelector('#menu_bar_mobile');
-
-// ── Sidebar open / close ──────────────────────────────────────────────────────
 
 const toggleSidebar = (show) => {
     if (show) {
@@ -17,78 +21,60 @@ const toggleSidebar = (show) => {
     }
 };
 
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => toggleSidebar(true));
-}
+if (menuBtn) menuBtn.addEventListener('click', () => toggleSidebar(true));
+if (menuBtnMobile) menuBtnMobile.addEventListener('click', () => toggleSidebar(true));
+if (closeBtn) closeBtn.addEventListener('click', () => toggleSidebar(false));
 
-if (menuBtnMobile) {
-    menuBtnMobile.addEventListener('click', () => toggleSidebar(true));
-}
-
-if (closeBtn) {
-    closeBtn.addEventListener('click', () => toggleSidebar(false));
-}
-
-// ── Active sidebar link ───────────────────────────────────────────────────────
-
-const sidebarLinks = document.querySelectorAll('.sidebar a');
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        sidebarLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-    });
-});
-
-// ── Dark / Light theme toggle ─────────────────────────────────────────────────
-
-const darkTheme = {
-    '--clr-color-background': '#181a1e',
-    '--clr-white': '#202528',
-    '--clr-dark': '#edeffd',
-    '--clr-dark-variant': '#a3bdcc',
-    '--clr-dark-light': '#444f5b',
-    '--clr-info-dark': '#93a6b9',
-    '--clr-light': 'rgba(0, 0, 0, 0.4)',
-};
-
-const lightTheme = {
-    '--clr-color-background': '#f6f6f9',
-    '--clr-white': '#fff',
-    '--clr-dark': '#363949',
-    '--clr-dark-variant': '#677483',
-    '--clr-dark-light': '#dce1eb',
-    '--clr-info-dark': '#7d8da1',
-    '--clr-light': 'rgba(132, 139, 200, 0.18)',
-};
-
+// Theme Logic
 const applyTheme = (isDark) => {
-    const theme = isDark ? darkTheme : lightTheme;
-    Object.entries(theme).forEach(([key, value]) => {
-        document.documentElement.style.setProperty(key, value);
-    });
-
-    if (themeToggler) {
-        const lightIcon = themeToggler.querySelector('span:nth-child(1)');
-        const darkIcon = themeToggler.querySelector('span:nth-child(2)');
-        if (isDark) {
-            lightIcon.classList.remove('active');
-            darkIcon.classList.add('active');
-        } else {
-            lightIcon.classList.add('active');
-            darkIcon.classList.remove('active');
-        }
+    const root = document.documentElement;
+    if (isDark) {
+        root.style.setProperty('--clr-color-background', '#181a1e');
+        root.style.setProperty('--clr-white', '#202528');
+        root.style.setProperty('--clr-dark', '#edeffd');
+    } else {
+        root.style.setProperty('--clr-color-background', '#f6f6f9');
+        root.style.setProperty('--clr-white', '#fff');
+        root.style.setProperty('--clr-dark', '#363949');
     }
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 };
 
-// Initial load
 const savedTheme = localStorage.getItem('theme');
-let isDarkTheme = savedTheme === 'dark';
-applyTheme(isDarkTheme);
+applyTheme(savedTheme === 'dark');
 
-if (themeToggler) {
-    themeToggler.addEventListener('click', () => {
-        isDarkTheme = !isDarkTheme;
-        applyTheme(isDarkTheme);
+// 3. Firebase: Add Product Logic
+const addProductBtn = document.querySelector('.item.add_products');
+
+if (addProductBtn) {
+    addProductBtn.addEventListener('click', async () => {
+        // User se data lena
+        const name = prompt("Enter Furniture Name (e.g. Luxury Sofa):");
+        const price = prompt("Enter Price (Number only):");
+        const qty = prompt("Enter Quantity (Number only):");
+        const desc = prompt("Enter Description:");
+        const category = prompt("Enter Category (bed, sofa, table, etc.):").toLowerCase();
+
+        // Validation: Name aur Price hona zaroori hai
+        if (name && price && !isNaN(price)) {
+            try {
+                const docRef = await addDoc(collection(db, "products"), {
+                    Name: name,            // Matches your Firestore screenshot
+                    price: Number(price),  // Storing as Number
+                    Quantity: Number(qty), // Storing as Number
+                    description: desc,
+                    category: category,    // This helps in filtering on front-end
+                    createdAt: serverTimestamp()
+                });
+                
+                alert("✅ Product Added! ID: " + docRef.id);
+                console.log("Document written with ID: ", docRef.id);
+            } catch (error) {
+                console.error("Firebase Error:", error);
+                alert("❌ Error: " + error.message);
+            }
+        } else {
+            alert("Please enter a valid Name and Price.");
+        }
     });
 }

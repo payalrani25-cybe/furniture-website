@@ -1,283 +1,260 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
-
-
 <head>
-
-
     <meta charset="UTF-8">
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>Table Luxe - Premium 3D View</title>
-
-
+    <title>Table Luxe - Premium 3D View & Zoom</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
-
-
-
     <style>
-        /* Loading Poster Fix: White screen hatane ke liye */
+        /* --- ZOOM SYSTEM CSS --- */
+        .zoom-area {
+            position: relative;
+            cursor: crosshair;
+            overflow: visible;
+        }
 
+        #lens {
+            position: absolute;
+            border: 1.5px solid #4f46e5;
+            width: 140px;
+            height: 140px;
+            background-color: rgba(79, 70, 229, 0.1);
+            display: none;
+            z-index: 10;
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        #zoom-result {
+            position: absolute;
+            background-repeat: no-repeat;
+            display: none;
+            z-index: 50;
+            background-color: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 2px solid #f1f5f9;
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 1024px) {
+            #zoom-result {
+                left: 105%;
+                top: 0;
+                width: 550px;
+                height: 550px;
+            }
+        }
+
+        /* Mobile Layout (Inner Zoom) */
+        @media (max-width: 1023px) {
+            #zoom-result {
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+            #lens { display: none !important; }
+        }
 
         model-viewer::part(poster) {
-
-
             background-size: contain;
-
-
             background-repeat: no-repeat;
             background-position: center;
-
-
             background-color: #ffffff;
-
-
-        }
-
-
-        .active-thumb {
-            border-color: #4f46e5 !important;
-            scale: 1.05;
         }
     </style>
-
-
 </head>
-
 
 <body class="bg-slate-50 font-sans p-4 md:p-10">
 
-
-
-
-
-
-    <div class="max-w-5xl mx-auto">
-
-
+    <div class="max-w-6xl mx-auto">
         <button onclick="history.back()"
             class="mb-6 font-bold text-indigo-600 flex items-center gap-2 hover:translate-x-[-5px] transition-transform">
-
-
             <span>←</span> Back to Shop
-
-
         </button>
-
-
-
-
-
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-
-
-
             <div class="space-y-6">
-
-
-                <div
-                    class="bg-white rounded-[3rem] shadow-2xl overflow-hidden p-4 border border-slate-100 relative h-[450px] flex items-center justify-center">
-
-
-
+                <div class="zoom-area bg-white rounded-[3rem] shadow-2xl p-4 border border-slate-100 relative h-[450px] flex items-center justify-center" id="main-display-box">
+                    
+                    <div id="lens"></div>
+                    
+                    <img id="main-img" src="" class="max-w-full max-h-full object-contain rounded-3xl transition-opacity duration-300">
 
                     <model-viewer id="main-3d" src="" poster="" ar camera-controls auto-rotate shadow-intensity="1"
                         class="hidden w-full h-full">
-
-
-                        <div slot="poster" id="custom-poster"
-                            class="w-full h-full flex items-center justify-center bg-white">
-
-
+                        <div slot="poster" class="w-full h-full flex items-center justify-center bg-white">
                             <img id="poster-img" src="" class="w-full h-full object-contain">
-
-
                         </div>
-
-
                     </model-viewer>
 
-
-
-
-                    <img id="main-img" src=""
-                        class="w-full h-full object-contain rounded-3xl transition-opacity duration-300">
-
-
+                    <div id="zoom-result"></div>
                 </div>
 
-
-
-
-
-
-                <div id="thumb-container" class="flex gap-4 overflow-x-auto py-2 px-1">
-
-
-                    <div onclick="show3D()"
-                        class="min-w-[90px] h-20 bg-indigo-600 text-white rounded-2xl flex flex-col items-center justify-center cursor-pointer shadow-lg hover:bg-indigo-700 transition shrink-0 group">
-
-
-                        <img src="https://cdn-icons-png.flaticon.com/512/3504/3504384.png"
-                            class="w-8 h-8 invert group-hover:rotate-12 transition">
-
-
-                        <span class="text-[10px] font-bold mt-1">VIEW 3D</span>
-
-
-                    </div>
-
-
-                </div>
-
-
+                <div id="thumb-container" class="flex gap-4 overflow-x-auto py-2 px-1"></div>
             </div>
-
-
-
-
-
 
             <div class="flex flex-col justify-center space-y-6">
-
-
                 <div>
-
-
-                    <h1 id="p-title" class="text-5xl font-black text-slate-800 leading-tight">Loading...</h1>
-
-
+                    <h1 id="p-title" class="text-5xl font-black text-slate-800 leading-tight">Loading Table...</h1>
                     <p id="p-price" class="text-3xl text-indigo-600 font-extrabold mt-3 italic"></p>
-                   
-
-
                 </div>
 
-
-
-
-                <div class="h-[2px] bg-slate-200 w-20"></div>
-
-
-
+                <div class="h-[2px] bg-indigo-100 w-24"></div>
 
                 <p id="p-desc" class="text-slate-500 text-lg leading-relaxed"></p>
-                <p id="p-specs" class="text-slate-500 text-lg leading-relaxed"></p>
-
-
-
-
-
+                <div id="p-specs" class="text-slate-400 text-base border-l-4 border-indigo-200 pl-4"></div>
 
                 <div class="pt-6">
-
-
-                    <button onclick="handleBooking()"
-                        class="w-full md:w-auto bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-xl hover:bg-indigo-600 hover:scale-[1.02] transition-all">
-
-
+                    <button class="w-full md:w-auto bg-slate-900 text-white px-14 py-5 rounded-2xl font-black text-xl shadow-xl hover:bg-indigo-600 transition-all active:scale-95">
                         Book Now
-
-
                     </button>
-
-
                 </div>
-
-
             </div>
-
-
         </div>
-
-
     </div>
 
-
-<script src="table.js"></script>
+    <script src="table.js"></script>
 
     <script>
+        let is3DActive = false;
 
+        function initZoom() {
+            const img = document.getElementById("main-img");
+            const result = document.getElementById("zoom-result");
+            const lens = document.getElementById("lens");
+            const container = document.getElementById("main-display-box");
 
+            if (is3DActive || !img.src) return;
 
+            result.style.backgroundImage = `url('${img.src}')`;
 
+            const moveLogic = (e) => {
+                if (is3DActive) return;
 
+                const isMobile = window.innerWidth < 1024;
+                result.style.display = "block";
+                if(!isMobile) lens.style.display = "block";
 
-       window.onload = function() {
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('id') || 0;
-   
-    // Ensure 'product' variable is coming from chairs.js
-    currentItem = product.find(p => p.id == productId);
+                const rect = img.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
 
+                // Mouse or Touch points
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    if (currentItem) {
-        // 1. Text aur Price fill karein
-        document.getElementById('p-title').innerText = currentItem.title;
-        document.getElementById('p-price').innerText = "₹" + currentItem.price.toLocaleString();
-        document.getElementById('p-desc').innerHTML = currentItem.desc;
-        document.getElementById('p-specs').innerHTML = currentItem.specs;
+                let x = clientX - rect.left;
+                let y = clientY - rect.top;
 
+                // Lens position
+                let lx = x - (lens.offsetWidth / 2);
+                let ly = y - (lens.offsetHeight / 2);
 
-        // 2. Main Image set karein
-        const mainImg = document.getElementById('main-img');
-        mainImg.src = currentItem.img;
+                // Boundaries check
+                if (lx < 0) lx = 0;
+                if (ly < 0) ly = 0;
+                if (lx > img.width - lens.offsetWidth) lx = img.width - lens.offsetWidth;
+                if (ly > img.height - lens.offsetHeight) ly = img.height - lens.offsetHeight;
 
+                // Move Lens (Desktop only)
+                if(!isMobile) {
+                    lens.style.left = (lx + (rect.left - containerRect.left)) + "px";
+                    lens.style.top = (ly + (rect.top - containerRect.top)) + "px";
+                }
 
-        // 3. Thumbnails Container ko select karein
-        const container = document.getElementById('thumb-container');
-       
-        // --- BLUE BUTTON HATANE KE LIYE ---
-        // Container ko clear kar rahe hain taaki sirf images dikhen
-        container.innerHTML = '';
+                // Zoom Calculation
+                const cx = result.offsetWidth / (isMobile ? img.width / 1.8 : lens.offsetWidth);
+                const cy = result.offsetHeight / (isMobile ? img.height / 1.8 : lens.offsetHeight);
 
-
-        // 4. Gallery images ko loop karke add karein
-        currentItem.gallery.forEach((url, index) => {
-            const img = document.createElement('img');
-            img.src = url;
-           
-            // Design classes (Tailwind)
-            img.className =` w-20 h-20 shrink-0 object-cover rounded-2xl cursor-pointer border-2 border-transparent hover:border-indigo-500 transition shadow-md`;
-           
-            // Default active state pehli image ke liye
-            if(index === 0) img.classList.add('border-indigo-600');
-
-
-            // --- CLICK LOGIC ---
-            img.onclick = () => {
-                // Badi image badal do
-                mainImg.src = url;
-               
-                // Sab thumbnails se border hatao
-                document.querySelectorAll('#thumb-container img').forEach(t => {
-                    t.classList.remove('border-indigo-600');
-                });
-               
-                // Sirf clicked thumbnail pe border lagao
-                img.classList.add('border-indigo-600');
+                result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+                
+                if (isMobile) {
+                    result.style.backgroundPosition = `-${x * cx - (result.offsetWidth / 2)}px -${y * cy - (result.offsetHeight / 2)}px`;
+                } else {
+                    result.style.backgroundPosition = `-${lx * cx}px -${ly * cy}px`;
+                }
             };
-           
-            container.appendChild(img);
-        });
-    }
-};
+
+            container.addEventListener("mousemove", moveLogic);
+            container.addEventListener("touchmove", moveLogic, {passive: false});
+
+            const stopZoom = () => {
+                lens.style.display = "none";
+                result.style.display = "none";
+            };
+
+            container.addEventListener("mouseleave", stopZoom);
+            container.addEventListener("touchend", stopZoom);
+        }
+
+        function switchMode(to3D, url = null) {
+            const mainImg = document.getElementById('main-img');
+            const main3d = document.getElementById('main-3d');
+            
+            if(to3D) {
+                is3DActive = true;
+                mainImg.classList.add('hidden');
+                main3d.classList.remove('hidden');
+                document.getElementById('zoom-result').style.display = 'none';
+            } else {
+                is3DActive = false;
+                mainImg.classList.remove('hidden');
+                main3d.classList.add('hidden');
+                if(url) mainImg.src = url;
+                setTimeout(initZoom, 100);
+            }
+        }
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id') || 0;
+            const currentItem = product.find(p => p.id == productId);
+
+            if (currentItem) {
+                document.getElementById('p-title').innerText = currentItem.title;
+                document.getElementById('p-price').innerText = "₹" + currentItem.price.toLocaleString();
+                document.getElementById('p-desc').innerHTML = currentItem.desc;
+                document.getElementById('p-specs').innerHTML = currentItem.specs || "";
+                
+                const modelViewer = document.getElementById('main-3d');
+                modelViewer.src = currentItem.model3d || "";
+                document.getElementById('poster-img').src = currentItem.img;
+
+                const mainImg = document.getElementById('main-img');
+                mainImg.src = currentItem.img;
+                mainImg.onload = initZoom;
+
+                const thumbBox = document.getElementById('thumb-container');
+                thumbBox.innerHTML = ''; 
+
+                // 3D Toggle Button
+                const btn3D = document.createElement('div');
+                btn3D.className = "min-w-[90px] h-20 bg-indigo-600 text-white rounded-2xl flex flex-col items-center justify-center cursor-pointer shadow-lg hover:bg-indigo-700 transition shrink-0 group";
+                btn3D.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/3504/3504384.png" class="w-8 h-8 invert group-hover:rotate-12 transition"><span class="text-[10px] font-bold mt-1">3D VIEW</span>`;
+                btn3D.onclick = () => switchMode(true);
+                thumbBox.appendChild(btn3D);
+
+                // Gallery Thumbs
+                currentItem.gallery.forEach((url, index) => {
+                    const t = document.createElement('img');
+                    t.src = url;
+                    t.className = `w-20 h-20 shrink-0 object-cover rounded-2xl cursor-pointer border-2 transition-all ${index === 0 ? 'border-indigo-600' : 'border-transparent'}`;
+                    
+                    t.onclick = () => {
+                        switchMode(false, url);
+                        document.querySelectorAll('#thumb-container img').forEach(i => i.classList.remove('border-indigo-600'));
+                        t.classList.add('border-indigo-600');
+                    };
+                    thumbBox.appendChild(t);
+                });
+            }
+        };
+
+        window.onresize = initZoom;
     </script>
-
-
 </body>
-
-
 </html>
-

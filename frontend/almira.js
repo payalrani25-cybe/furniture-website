@@ -87,8 +87,201 @@ const product = [
 
 
 
-let cart = JSON.parse(localStorage.getItem('furnitureCart')) || [];
-let wish = JSON.parse(localStorage.getItem('furnitureWishlist')) || [];
+// let cart = JSON.parse(localStorage.getItem('furnitureCart')) || [];
+// let wish = JSON.parse(localStorage.getItem('furnitureWishlist')) || [];
+
+
+// // UI Control Functions
+// function openPage(id) {
+//     document.getElementById(id).classList.add('active');
+//     document.body.style.overflow = 'hidden';
+// }
+
+
+// function closePage(id) {
+//     document.getElementById(id).classList.remove('active');
+//     document.body.style.overflow = 'auto';
+// }
+
+
+// // Initialize Main Grid
+// function init() {
+//     const grid = document.getElementById('main-grid');
+//     if(!grid) return;
+//     grid.innerHTML = '';
+
+
+//     product.forEach((item) => {
+//         grid.innerHTML += `
+//             <div class="bg-white rounded-[2.5rem] p-4 shadow-sm border border-gray-100 group transition-all hover:shadow-2xl">
+//                 <div class="relative overflow-hidden rounded-[2rem] mb-4 h-60 cursor-pointer"
+//                      onclick="goToDetails(${item.id})">
+//                     <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                   
+//                     <button onclick="event.stopPropagation(); toggleWish(${item.id})"
+//                             class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg z-10">
+//                         <i id="h-main-${item.id}" class="fa-regular fa-heart text-red-500 text-lg"></i>
+//                     </button>
+//                 </div>
+               
+//                 <div class="px-2">
+//                     <h3 class="text-xl font-bold text-slate-800">${item.title}</h3>
+//                     <p class="text-indigo-600 font-black text-2xl mt-1">₹${item.price.toLocaleString()}</p>
+//                     <div class="flex gap-2 mt-5">
+//                         <button onclick="addToCart(${item.id})" class="flex-1 bg-slate-900 text-white py-3 rounded-2xl font-bold text-sm hover:bg-slate-700 transition">Add To Cart</button>
+//                         <button onclick="handleBooking('${item.title}')" class="flex-1 booking-btn text-white py-3 rounded-2xl font-bold text-sm shadow-md transition">Book Now</button>
+//                     </div>
+//                 </div>
+//             </div>`;
+//     });
+// }
+
+
+// // Navigation
+// function goToDetails(id) {
+//     window.location.href = `almira-details.html?id=${id}`;
+// }
+
+
+// // Wishlist Logic
+// function toggleWish(id) {
+//     const item = product.find(x => x.id === id);
+//     const idx = wish.findIndex(x => x.id === id);
+//     if (idx === -1) {
+//         wish.push(item);
+//         if (window.showPatodiToast) showPatodiToast('Wishlist mein add ho gaya!', '❤️', '#ef4444');
+//     } else {
+//         wish.splice(idx, 1);
+//         if (window.showPatodiToast) showPatodiToast('Wishlist se hata diya gaya.', '🗑️', '#94a3b8');
+//     }
+//     update();
+// }
+
+
+// // Cart Logic
+// function addToCart(id) {
+//     const item = product.find(x => x.id === id);
+//     const cartItem = cart.find(x => x.id === id);
+//     if (cartItem) {
+//         cartItem.qty++;
+//     } else {
+//         cart.push({ ...item, qty: 1 });
+//     }
+//     if (window.showPatodiToast) showPatodiToast('Product cart mein add ho gaya!', '🛒', '#eab308');
+//     update();
+// }
+
+
+// function changeQty(id, delta) {
+//     const item = cart.find(x => x.id === id);
+//     if (item) {
+//         item.qty += delta;
+//         if (item.qty <= 0) removeFromCart(id);
+//         update();
+//     }
+// }
+
+
+// function removeFromCart(id) {
+//     cart = cart.filter(x => x.id !== id);
+//     update();
+// }
+
+
+// function handleBooking(name) {
+//   window.location.href = "booking.html";
+// }
+
+// // Global Update Function
+// function update() {
+//     // Save to localStorage
+//     localStorage.setItem('furnitureCart', JSON.stringify(cart));
+//     localStorage.setItem('furnitureWishlist', JSON.stringify(wish));
+
+//     // 1. Update Badges
+//     const wishBadge = document.getElementById('wishlist-count') || document.getElementById('wish-badge');
+//     const cartBadge = document.getElementById('cart-count') || document.getElementById('cart-badge');
+//     if (wishBadge) wishBadge.innerText = wish.length;
+//     if (cartBadge) cartBadge.innerText = cart.reduce((a, b) => a + b.qty, 0);
+
+
+//     // 2. Update Wishlist Content
+//     const wishBox = document.getElementById('wish-content');
+//     if(wishBox) {
+//         wishBox.innerHTML = wish.length ? wish.map(x => `
+//             <div class="bg-white p-5 rounded-[2rem] border-2 border-gray-50 flex flex-col md:flex-row gap-6 shadow-sm hover:border-indigo-100 transition">
+//                 <img src="${x.img}" class="w-full md:w-32 h-32 object-cover rounded-2xl shadow-inner">
+//                 <div class="flex-1">
+//                     <div class="flex justify-between">
+//                         <h4 class="font-black text-xl text-slate-800">${x.title}</h4>
+//                         <button onclick="toggleWish(${x.id})" class="text-red-400 hover:text-red-600"><i class="fa-solid fa-trash-can"></i></button>
+//                     </div>
+//                     <p class="text-indigo-600 font-bold text-lg mb-4">₹${x.price.toLocaleString()}</p>
+//                     <div class="flex gap-3">
+//                         <button onclick="addToCart(${x.id})" class="flex-1 bg-indigo-50 text-indigo-600 py-2 rounded-xl font-bold text-xs border border-indigo-100">Move to Cart</button>
+//                         <button onclick="handleBooking('${x.title}')" class="flex-1 booking-btn text-white py-2 rounded-xl font-bold text-xs">Direct Book</button>
+//                     </div>
+//                 </div>
+//             </div>
+//         `).join('') : '<div class="col-span-full py-20 text-center text-slate-400 font-medium">Wishlist khaali hai...</div>';
+//     }
+
+
+//     // 3. Update Cart Content
+//     const cartBox = document.getElementById('cart-content');
+//     let total = 0;
+//     if(cartBox) {
+//         cartBox.innerHTML = cart.length ? cart.map(x => {
+//             total += (x.price * x.qty);
+//             return `
+//                 <div class="flex gap-6 p-4 bg-white rounded-3xl border border-gray-50 shadow-sm">
+//                     <img src="${x.img}" class="w-24 h-24 object-cover rounded-2xl">
+//                     <div class="flex-1">
+//                         <div class="flex justify-between items-start">
+//                             <h4 class="font-bold text-lg">${x.title}</h4>
+//                             <p class="text-indigo-600 font-black">₹${(x.price * x.qty).toLocaleString()}</p>
+//                         </div>
+//                         <div class="flex items-center gap-4 mt-3">
+//                             <div class="flex items-center gap-4 bg-slate-100 px-4 py-2 rounded-2xl">
+//                                 <button onclick="changeQty(${x.id}, -1)" class="font-black">-</button>
+//                                 <span class="font-bold">${x.qty}</span>
+//                                 <button onclick="changeQty(${x.id}, 1)" class="font-black">+</button>
+//                             </div>
+//                             <button onclick="removeFromCart(${x.id})" class="text-slate-300 hover:text-red-500 transition"><i class="fa-solid fa-trash"></i></button>
+//                         </div>
+//                     </div>
+//                 </div>`;
+//         }).join('') : '<div class="py-20 text-center text-slate-400">Cart khaali hai.</div>';
+       
+//         document.getElementById('grand-total').innerText = '₹' + total.toLocaleString();
+//     }
+
+
+//     // 4. Fix Heart Icons on Main Grid
+//     product.forEach((item) => {
+//         const icon = document.getElementById(`h-main-${item.id}`);
+//         if (icon) {
+//             const isWished = wish.some(x => x.id === item.id);
+//             icon.className = isWished ? "fa-solid fa-heart text-red-500 text-lg" : "fa-regular fa-heart text-red-500 text-lg";
+//         }
+//     });
+// }
+
+
+// // Start Application
+// document.addEventListener('DOMContentLoaded', () => {
+//     init();
+//     update(); // Restore state on page load
+// });
+
+
+
+
+
+
+
+let cart = [];
+let wish = [];
 
 
 // UI Control Functions
@@ -107,7 +300,7 @@ function closePage(id) {
 // Initialize Main Grid
 function init() {
     const grid = document.getElementById('main-grid');
-    if(!grid) return;
+    if (!grid) return;
     grid.innerHTML = '';
 
 
@@ -139,7 +332,7 @@ function init() {
 
 // Navigation
 function goToDetails(id) {
-    window.location.href = `almira-details.html?id=${id}`;
+    window.location.href = `chair-details.html?id=${id}`;
 }
 
 
@@ -149,10 +342,8 @@ function toggleWish(id) {
     const idx = wish.findIndex(x => x.id === id);
     if (idx === -1) {
         wish.push(item);
-        if (window.showPatodiToast) showPatodiToast('Wishlist mein add ho gaya!', '❤️', '#ef4444');
     } else {
         wish.splice(idx, 1);
-        if (window.showPatodiToast) showPatodiToast('Wishlist se hata diya gaya.', '🗑️', '#94a3b8');
     }
     update();
 }
@@ -167,7 +358,6 @@ function addToCart(id) {
     } else {
         cart.push({ ...item, qty: 1 });
     }
-    if (window.showPatodiToast) showPatodiToast('Product cart mein add ho gaya!', '🛒', '#eab308');
     update();
 }
 
@@ -189,25 +379,19 @@ function removeFromCart(id) {
 
 
 function handleBooking(name) {
-  window.location.href = "booking.html";
+    window.location.href = "booking.html";
 }
 
 // Global Update Function
 function update() {
-    // Save to localStorage
-    localStorage.setItem('furnitureCart', JSON.stringify(cart));
-    localStorage.setItem('furnitureWishlist', JSON.stringify(wish));
-
     // 1. Update Badges
-    const wishBadge = document.getElementById('wishlist-count') || document.getElementById('wish-badge');
-    const cartBadge = document.getElementById('cart-count') || document.getElementById('cart-badge');
-    if (wishBadge) wishBadge.innerText = wish.length;
-    if (cartBadge) cartBadge.innerText = cart.reduce((a, b) => a + b.qty, 0);
+    document.getElementById('wish-badge').innerText = wish.length;
+    document.getElementById('cart-badge').innerText = cart.reduce((a, b) => a + b.qty, 0);
 
 
     // 2. Update Wishlist Content
     const wishBox = document.getElementById('wish-content');
-    if(wishBox) {
+    if (wishBox) {
         wishBox.innerHTML = wish.length ? wish.map(x => `
             <div class="bg-white p-5 rounded-[2rem] border-2 border-gray-50 flex flex-col md:flex-row gap-6 shadow-sm hover:border-indigo-100 transition">
                 <img src="${x.img}" class="w-full md:w-32 h-32 object-cover rounded-2xl shadow-inner">
@@ -230,7 +414,7 @@ function update() {
     // 3. Update Cart Content
     const cartBox = document.getElementById('cart-content');
     let total = 0;
-    if(cartBox) {
+    if (cartBox) {
         cartBox.innerHTML = cart.length ? cart.map(x => {
             total += (x.price * x.qty);
             return `
@@ -252,7 +436,7 @@ function update() {
                     </div>
                 </div>`;
         }).join('') : '<div class="py-20 text-center text-slate-400">Cart khaali hai.</div>';
-       
+
         document.getElementById('grand-total').innerText = '₹' + total.toLocaleString();
     }
 
@@ -269,8 +453,5 @@ function update() {
 
 
 // Start Application
-document.addEventListener('DOMContentLoaded', () => {
-    init();
-    update(); // Restore state on page load
-});
+document.addEventListener('DOMContentLoaded', init);
 
