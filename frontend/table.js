@@ -165,10 +165,8 @@ const product = [
 
 
 
-
-
-let cart = JSON.parse(localStorage.getItem('furnitureCart')) || [];
-let wish = JSON.parse(localStorage.getItem('furnitureWishlist')) || [];
+let cart = [];
+let wish = [];
 
 
 // UI Control Functions
@@ -219,7 +217,7 @@ function init() {
 
 // Navigation
 function goToDetails(id) {
-    window.location.href = `table-details.html?id=${id}`;
+    window.location.href = `sofa-detalis.html?id=${id}`;
 }
 
 
@@ -229,10 +227,8 @@ function toggleWish(id) {
     const idx = wish.findIndex(x => x.id === id);
     if (idx === -1) {
         wish.push(item);
-        if (window.showPatodiToast) showPatodiToast('Wishlist mein add ho gaya!', '❤️', '#ef4444');
     } else {
         wish.splice(idx, 1);
-        if (window.showPatodiToast) showPatodiToast('Wishlist se hata diya gaya.', '🗑️', '#94a3b8');
     }
     update();
 }
@@ -247,7 +243,6 @@ function addToCart(id) {
     } else {
         cart.push({ ...item, qty: 1 });
     }
-    if (window.showPatodiToast) showPatodiToast('Product cart mein add ho gaya!', '🛒', '#eab308');
     update();
 }
 
@@ -268,23 +263,15 @@ function removeFromCart(id) {
 }
 
 
-// Booking Alert
 function handleBooking(name) {
-    alert(`🎉 Congratulations! Aapne ${name} ki booking request bhej di hai. Hum aapko 24 ghante mein sampark karenge.`);
+    window.location.href = "booking.html";
 }
-
 
 // Global Update Function
 function update() {
-    // Save to localStorage
-    localStorage.setItem('furnitureCart', JSON.stringify(cart));
-    localStorage.setItem('furnitureWishlist', JSON.stringify(wish));
-
     // 1. Update Badges
-    const wishBadge = document.getElementById('wishlist-count') || document.getElementById('wish-badge');
-    const cartBadge = document.getElementById('cart-count') || document.getElementById('cart-badge');
-    if (wishBadge) wishBadge.innerText = wish.length;
-    if (cartBadge) cartBadge.innerText = cart.reduce((a, b) => a + b.qty, 0);
+    document.getElementById('wish-badge').innerText = wish.length;
+    document.getElementById('cart-badge').innerText = cart.reduce((a, b) => a + b.qty, 0);
 
 
     // 2. Update Wishlist Content
@@ -335,7 +322,6 @@ function update() {
                 </div>`;
         }).join('') : '<div class="py-20 text-center text-slate-400">Cart khaali hai.</div>';
 
-
         document.getElementById('grand-total').innerText = '₹' + total.toLocaleString();
     }
 
@@ -352,14 +338,5 @@ function update() {
 
 
 // Start Application
-document.addEventListener('DOMContentLoaded', () => {
-    init();
-    update();
-});
-
-
-
-
-
-
+document.addEventListener('DOMContentLoaded', init);
 

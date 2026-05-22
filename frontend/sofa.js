@@ -222,9 +222,6 @@ const product = [
 
 
 
-
-
-
 let cart = [];
 let wish = [];
 

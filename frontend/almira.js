@@ -85,10 +85,8 @@ const product = [
 
 
 
-
-
-let cart = JSON.parse(localStorage.getItem('furnitureCart')) || [];
-let wish = JSON.parse(localStorage.getItem('furnitureWishlist')) || [];
+let cart = [];
+let wish = [];
 
 
 // UI Control Functions
@@ -107,7 +105,7 @@ function closePage(id) {
 // Initialize Main Grid
 function init() {
     const grid = document.getElementById('main-grid');
-    if(!grid) return;
+    if (!grid) return;
     grid.innerHTML = '';
 
 
@@ -139,7 +137,7 @@ function init() {
 
 // Navigation
 function goToDetails(id) {
-    window.location.href = `almira-details.html?id=${id}`;
+    window.location.href = `sofa-detalis.html?id=${id}`;
 }
 
 
@@ -149,10 +147,8 @@ function toggleWish(id) {
     const idx = wish.findIndex(x => x.id === id);
     if (idx === -1) {
         wish.push(item);
-        if (window.showPatodiToast) showPatodiToast('Wishlist mein add ho gaya!', '❤️', '#ef4444');
     } else {
         wish.splice(idx, 1);
-        if (window.showPatodiToast) showPatodiToast('Wishlist se hata diya gaya.', '🗑️', '#94a3b8');
     }
     update();
 }
@@ -167,7 +163,6 @@ function addToCart(id) {
     } else {
         cart.push({ ...item, qty: 1 });
     }
-    if (window.showPatodiToast) showPatodiToast('Product cart mein add ho gaya!', '🛒', '#eab308');
     update();
 }
 
@@ -189,25 +184,19 @@ function removeFromCart(id) {
 
 
 function handleBooking(name) {
-  window.location.href = "booking.html";
+    window.location.href = "booking.html";
 }
 
 // Global Update Function
 function update() {
-    // Save to localStorage
-    localStorage.setItem('furnitureCart', JSON.stringify(cart));
-    localStorage.setItem('furnitureWishlist', JSON.stringify(wish));
-
     // 1. Update Badges
-    const wishBadge = document.getElementById('wishlist-count') || document.getElementById('wish-badge');
-    const cartBadge = document.getElementById('cart-count') || document.getElementById('cart-badge');
-    if (wishBadge) wishBadge.innerText = wish.length;
-    if (cartBadge) cartBadge.innerText = cart.reduce((a, b) => a + b.qty, 0);
+    document.getElementById('wish-badge').innerText = wish.length;
+    document.getElementById('cart-badge').innerText = cart.reduce((a, b) => a + b.qty, 0);
 
 
     // 2. Update Wishlist Content
     const wishBox = document.getElementById('wish-content');
-    if(wishBox) {
+    if (wishBox) {
         wishBox.innerHTML = wish.length ? wish.map(x => `
             <div class="bg-white p-5 rounded-[2rem] border-2 border-gray-50 flex flex-col md:flex-row gap-6 shadow-sm hover:border-indigo-100 transition">
                 <img src="${x.img}" class="w-full md:w-32 h-32 object-cover rounded-2xl shadow-inner">
@@ -230,7 +219,7 @@ function update() {
     // 3. Update Cart Content
     const cartBox = document.getElementById('cart-content');
     let total = 0;
-    if(cartBox) {
+    if (cartBox) {
         cartBox.innerHTML = cart.length ? cart.map(x => {
             total += (x.price * x.qty);
             return `
@@ -252,7 +241,7 @@ function update() {
                     </div>
                 </div>`;
         }).join('') : '<div class="py-20 text-center text-slate-400">Cart khaali hai.</div>';
-       
+
         document.getElementById('grand-total').innerText = '₹' + total.toLocaleString();
     }
 
@@ -269,8 +258,5 @@ function update() {
 
 
 // Start Application
-document.addEventListener('DOMContentLoaded', () => {
-    init();
-    update(); // Restore state on page load
-});
+document.addEventListener('DOMContentLoaded', init);
 

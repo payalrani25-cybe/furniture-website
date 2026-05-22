@@ -151,8 +151,6 @@ const product = [
 
 
 
-
-
 let cart = [];
 let wish = [];
 
@@ -205,7 +203,7 @@ function init() {
 
 // Navigation
 function goToDetails(id) {
-    window.location.href = `chair-details.html?id=${id}`;
+    window.location.href = `sofa-detalis.html?id=${id}`;
 }
 
 

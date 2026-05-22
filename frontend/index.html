@@ -251,40 +251,76 @@
     </section>
 
     <!-- Category Navigation Strip (Meesho-style, filters on-page) -->
-    <div class="container mx-auto px-6 -mt-12 relative z-10 mb-16">
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-            <button onclick="filterByCategory('sofas','Sofas')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="sofas">
-                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
-                    <i class="fa-solid fa-couch text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
-                </div>
-                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Sofa</span>
-            </button>
-            <button onclick="filterByCategory('beds','Beds')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="beds">
-                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
-                    <i class="fa-solid fa-bed text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
-                </div>
-                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Beds</span>
-            </button>
-            <button onclick="filterByCategory('chairs','Chairs')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="chairs">
-                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
-                    <i class="fa-solid fa-chair text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
-                </div>
-                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Chairs</span>
-            </button>
-            <button onclick="filterByCategory('almira','Almirah')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="almira">
-                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
-                    <i class="fa-solid fa-door-closed text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
-                </div>
-                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Almirah</span>
-            </button>
-            <button onclick="filterByCategory('table','Tables')" class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn" data-cat="table">
-                <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
-                    <i class="fa-solid fa-table-columns text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
-                </div>
-                <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">Tables</span>
-            </button>
-        </div>
+<div class="container mx-auto px-6 -mt-12 relative z-10 mb-16">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+
+        <!-- Sofa -->
+        <button onclick="window.location.href='sofa.html'"
+            class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn">
+
+            <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                <i class="fa-solid fa-couch text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+            </div>
+
+            <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">
+                Sofa
+            </span>
+        </button>
+
+        <!-- Beds -->
+        <button onclick="window.location.href='bed.html'"
+            class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn">
+
+            <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                <i class="fa-solid fa-bed text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+            </div>
+
+            <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">
+                Beds
+            </span>
+        </button>
+
+        <!-- Chairs -->
+        <button onclick="window.location.href='chairs.html'"
+            class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn">
+
+            <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                <i class="fa-solid fa-chair text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+            </div>
+
+            <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">
+                Chairs
+            </span>
+        </button>
+
+        <!-- Wardrobes -->
+        <button onclick="window.location.href='wardrobes.html'"
+            class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn">
+
+            <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                <i class="fa-solid fa-door-closed text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+            </div>
+
+            <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">
+                Wardrobes
+            </span>
+        </button>
+
+        <!-- Tables -->
+        <button onclick="window.location.href='table.html'"
+            class="bg-white p-6 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all text-center group border border-slate-50 cursor-pointer cat-btn">
+
+            <div class="h-16 w-16 bg-slate-50 rounded-2xl mx-auto flex items-center justify-center mb-4 group-hover:bg-[#c8a165] transition-colors">
+                <i class="fa-solid fa-table-columns text-2xl text-[#1a2a3a] group-hover:text-white transition-colors"></i>
+            </div>
+
+            <span class="font-bold text-[#1a2a3a] text-xs uppercase tracking-[0.2em]">
+                Tables
+            </span>
+        </button>
+
     </div>
+</div>
 
     <div id="products-section" class="px-6 md:px-16">
         <div class="flex items-center justify-between mb-8">

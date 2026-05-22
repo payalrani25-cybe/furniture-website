@@ -120,6 +120,130 @@
         <div class="p-6 max-w-5xl mx-auto">
 
 
+            <div class="flex justify-between items-chairs mb-8 border-b pb-4">
+
+
+                <button onclick="closePage('wishlist-page')"
+                    class="text-2xl h-10 w-10 flex items-chairs justify-chairs bg-gray-100 rounded-full">&larr;</button>
+
+
+                <h2 class="text-3xl font-extrabold text-slate-800">Wishlist ❤️</h2>
+
+
+                <div class="w-10"></div>
+
+
+            </div>
+
+
+            <div id="wish-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div id="cart-page" class="full-screen-page">
+
+
+        <div class="p-6 max-w-3xl mx-auto h-full flex flex-col">
+
+
+            <div class="flex justify-between items-chairs mb-8 border-b pb-4">
+
+
+                <button onclick="closePage('cart-page')"
+                    class="text-2xl h-10 w-10 flex items-chairs justify-chairs bg-gray-100 rounded-full">&larr;</button>
+
+
+                <h2 class="text-3xl font-extrabold text-slate-800"> Cart 🛒</h2>
+
+
+                <div class="w-10"></div>
+
+
+            </div>
+
+
+            <div id="cart-content" class="flex-1 overflow-y-auto space-y-6">
+
+
+            </div>
+
+
+            <div class="mt-6 p-8 bg-slate-900 rounded-3xl text-white shadow-2xl">
+
+
+                <div class="flex justify-between items-chairs mb-6">
+
+
+
+
+                    <div id="star-rating" class="flex gap-2 text-2xl cursor-pointer py-2">
+                        <i class="fa-solid fa-star" style="color: #1755ac;" onclick="setRating(1)"></i>
+                        <i class="fa-solid fa-star" style="color: #4b5563;" onclick="setRating(2)"></i>
+                        <i class="fa-solid fa-star" style="color: #4b5563;" onclick="setRating(3)"></i>
+                        <i class="fa-solid fa-star" style="color: #4b5563;" onclick="setRating(4)"></i>
+                        <i class="fa-solid fa-star" style="color: #4b5563;" onclick="setRating(5)"></i>
+                    </div>
+
+
+                    <span class="text-slate-400 text-lg font-medium">Grand Total</span>
+
+
+                    <span id="grand-total" class="text-3xl font-black">₹0</span>
+
+
+                </div>
+
+
+                <button onclick="handleBooking('All Cart Items')"
+                    class="w-full booking-btn py-5 rounded-2xl font-bold text-xl uppercase tracking-widest shadow-lg transform active:scale-95 transition">Confirm
+                    Booking Now</button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <script src="table.js"></script>
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+    <div id="wishlist-page" class="full-screen-page">
+
+
+        <div class="p-6 max-w-5xl mx-auto">
+
+
             <div class="flex justify-between items-center mb-8 border-b pb-4">
 
 
@@ -223,7 +347,8 @@
 
 
 
-    <script src="table.js"></script>
+    <script src="script.js"></script>
+    <script src="dynamic-page.js"></script>
 
 
 
